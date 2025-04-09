@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/**************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
@@ -11,9 +11,11 @@
 /* ************************************************************************** */
 
 #include <algorithm>
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
+
 using namespace std;
+
 int main()
 {
     string str = "Hello Mertcan";
@@ -21,3 +23,4 @@ int main()
     reverse(str.begin(), str.end());
 	cout<<"\n"<<str<<"\n";
     return 0;
+}
