@@ -6,12 +6,13 @@
 #    By: mekundur <mekundur@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/26 22:18:08 by mekundur          #+#    #+#              #
-#    Updated: 2025/04/01 17:36:01 by mekundur         ###   ########.fr        #
+#    Updated: 2025/04/14 15:00:46 by mekundur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
-SRC = megaphone.cpp
+NAME = my_phonebook
+HEAD = phone.hpp
+SRC = phone.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME) 
@@ -29,7 +30,7 @@ clean :
 
 fclean : clean 
 	@echo "Removing the executable"
-	@rm -f megaphone
+	@rm -f my_phonebook
 
 re : fclean all
 
