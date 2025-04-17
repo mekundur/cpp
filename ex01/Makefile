@@ -6,21 +6,21 @@
 #    By: mekundur <mekundur@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/26 22:18:08 by mekundur          #+#    #+#              #
-#    Updated: 2025/04/14 15:00:46 by mekundur         ###   ########.fr        #
+#    Updated: 2025/04/17 15:38:55 by mekundur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = my_phonebook
-HEAD = phone.hpp
+HEADER = phone.hpp
 SRC = phone.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME) 
 
-%.o: %.cpp Makefile
+%.o: %.cpp Makefile $(HEADER)
 	@c++ -c -g -Werror -Wall -Wextra -std=c++98 $< -o $@
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(HEADER)
 	@echo "Creating the executable"
 	@c++ -g -Werror -Wall -Wextra -std=c++98 $(OBJ) -o $(NAME)
 

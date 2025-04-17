@@ -6,7 +6,7 @@
 /*   By: mekundur <mekundur@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:01:48 by mekundur          #+#    #+#             */
-/*   Updated: 2025/04/14 16:25:28 by mekundur         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:39:01 by mekundur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,39 @@
 # define PHONE_HPP
 
 #include <string>
-
+#include <cstdio>
+#include <iostream>
 
 class	Contact
 {
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string	darkest_secret;
+	public:
+		Contact()
+		{
+			std::cout << "HELLO" << std::endl;
+			std::cin >> first_name;
+			std::cout << first_name << std::endl;
+				
+		}
+		void	ft_display(void)
+		{
+			std::cout << first_name << std::endl;
+			
+		
+		
+		}			
+	private:
+		std::string	first_name;
+		std::string	last_name;
+		std::string	nickname;
+		std::string	phone_number;
+		std::string	darkest_secret;
 
 };
 
 class	PhoneBook
 {
-	Contact *contacts[8];
+	public:
+	Contact contacts[8];
 
 };
 
