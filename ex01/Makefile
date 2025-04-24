@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = my_phonebook
+NAME = crappy_phonebook
 HEADER = phone.hpp
 SRC = phone.cpp
 OBJ = $(SRC:.cpp=.o)
@@ -30,7 +30,7 @@ clean :
 
 fclean : clean 
 	@echo "Removing the executable"
-	@rm -f my_phonebook
+	@rm -f crappy_phonebook
 
 re : fclean all
 
