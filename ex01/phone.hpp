@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phone.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mekundur <mekundur@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: mekundur <mekundur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:01:48 by mekundur          #+#    #+#             */
-/*   Updated: 2025/04/17 15:39:01 by mekundur         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:31:05 by mekundur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ class	Contact
 		{
 			std::cout << first_name << std::endl;
 			printf("%.10s\n", first_name.c_str());	
-		
-		
-		}			
-*/		void	Add(void)
+		}
+*/						
+		void	Add(void)
 		{
 			std::cout << "Please enter following info for the contact #" << index % 8 << std::endl;
 			std::cout << "First name of the contact" << std::endl;	
