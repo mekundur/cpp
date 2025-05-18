@@ -1,0 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phone.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mekundur <mekundur@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/14 15:01:48 by mekundur          #+#    #+#             */
+/*   Updated: 2025/05/15 17:31:05 by mekundur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
+# include "crappy.hpp"
+
+class	PhoneBook
+{
+	public:
+		PhoneBook();
+		~PhoneBook();
+		void	ADD(void);
+		void	SEARCH(void);
+		void	DISPLAY(void);
+		
+	private:
+		Contact contacts[8];
+		int		index;
+};
+
+#endif

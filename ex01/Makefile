@@ -1,36 +1,33 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mekundur <mekundur@student.42berlin.d      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/26 22:18:08 by mekundur          #+#    #+#              #
-#    Updated: 2025/04/17 15:38:55 by mekundur         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = crappy_phonebook
-HEADER = phone.hpp
-SRC = phone.cpp
-OBJ = $(SRC:.cpp=.o)
+HEADER = crappy.hpp PhoneBook.hpp Contact.hpp
+SRC = main.cpp PhoneBook.cpp Contact.cpp utils.cpp
+
+OBJDIR = obj/
+OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
+
+CXX = c++
+CXXFLAGS = -g -gdwarf-4 -Werror -Wall -Wextra -std=c++98
 
 all : $(NAME) 
 
-%.o: %.cpp Makefile $(HEADER)
-	@c++ -c -g -Werror -Wall -Wextra -std=c++98 $< -o $@
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
+
+$(OBJDIR)%.o: %.cpp | $(OBJDIR)
+	@$(CXX) -c $(CXXFLAGS) $< -o $@
 
 $(NAME) : $(OBJ) $(HEADER)
 	@echo "Creating the executable"
-	@c++ -g -Werror -Wall -Wextra -std=c++98 $(OBJ) -o $(NAME)
+	@ $(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean :
-	@echo "Cleaning up object files"
-	@rm -f $(OBJ)
+	@echo "Removing object files and objdir"
+	@if [ -d $(OBJDIR) ]; then rm -f $(OBJ); rm -r $(OBJDIR); fi
 
 fclean : clean 
 	@echo "Removing the executable"
-	@rm -f crappy_phonebook
+	@rm -f $(NAME)
+
 
 re : fclean all
 
