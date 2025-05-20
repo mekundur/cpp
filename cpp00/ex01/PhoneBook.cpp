@@ -37,16 +37,17 @@ void	PhoneBook::ADD(void)
 
 void	PhoneBook::SEARCH(void)
 {
+	int display_index;
 	int	count = 0;
 	for (int i = 0; i < 8; i++)
 		contacts[i].DisplayAll(i, &count);
 	if (count){
 		std::cout << "Enter an index number to display all details of respective contact:" << std::endl;
-//****		while (){
-//			std::cin >> index;  //// an integer check must be implemented!
-//			
-//		}
-		contacts[index ].DisplaySingle(index);
+		while (){
+			std::cin >> display_index;  //// an integer check must be implemented!
+			
+		}
+		contacts[display_index].DisplaySingle(display_index);
 	}
 }
 

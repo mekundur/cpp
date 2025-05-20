@@ -18,7 +18,6 @@ int	main(void)
 	std::string	input;
 	while (1)
 	{
-
 		std::cout << "Please enter a command: ADD or SEARCH or EXIT" << std::endl;
 		std::getline(std::cin, input);
 		if (!input.compare("EXIT") || !input.compare("exit") || std::cin.eof()){	
