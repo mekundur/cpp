@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mekundur <mekundur@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: mekundur <mekundur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:07:44 by mekundur          #+#    #+#             */
-/*   Updated: 2025/04/17 15:37:23 by mekundur         ###   ########.fr       */
+/*   Updated: 2025/05/21 19:37:56 by mekundur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,23 @@ void	PhoneBook::SEARCH(void)
 	int	count = 0;
 	for (int i = 0; i < 8; i++)
 		contacts[i].DisplayAll(i, &count);
-	if (count){
+	while (count){
 		std::cout << "Enter an index number to display all details of respective contact:" << std::endl;
 		std::cin >> display_index;
+		if (std::cin.eof())
+				break;
 		while (!std::cin.good() || !(display_index >= 0 && display_index < 8)){
 			std::cin.clear();			
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n')
+			std::cin.ignore(1000000, '\n');
 			std::cout << "Enter an index number to display all details of respective contact:" << std::endl;
-			std::cin >> display_index;  //// an integer check must be implemented!
-			
+			std::cin >> display_index;
+			if (std::cin.eof())
+				break;
 		}
 		contacts[display_index].DisplaySingle(display_index);
+		break ;
 	}
+	std::cin.clear();			
+	std::cin.ignore(1000000, '\n');
 }
 

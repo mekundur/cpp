@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mekundur <mekundur@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: mekundur <mekundur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:07:44 by mekundur          #+#    #+#             */
-/*   Updated: 2025/04/17 15:37:23 by mekundur         ###   ########.fr       */
+/*   Updated: 2025/05/21 20:16:40 by mekundur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void    Contact::set_first_name(void)
 			std::cout << "Bye bye!" << "\n";
             exit(1);
 		}
-        if (!first_name.compare(""))
+        if (first_name.empty() || !isAlphabetic(first_name))
             std::cout << "Please enter a valid first name" << '\n';
-        else
+        else {
+            ft_strTrim(first_name);
             break;
+        }
     }
 }
 
@@ -39,7 +41,7 @@ void    Contact::set_last_name(void)
 			std::cout << "Bye bye!" << "\n";
             exit(1);
 		}
-        if (!last_name.compare(""))
+        if (last_name.empty() || !isAlphabetic(last_name))
             std::cout << "Please enter a valid last name" << '\n';
         else
             break;
@@ -56,7 +58,7 @@ void    Contact::set_nickname(void)
 			std::cout << "Bye bye!" << "\n";
             exit(1);
 		}
-        if (!nickname.compare(""))
+        if (nickname.empty())
             std::cout << "Please enter a valid nickname" << '\n';
         else
             break;
@@ -73,7 +75,7 @@ void    Contact::set_phone_number(void)
 			std::cout << "Bye bye!" << "\n";
             exit(1);
 		}
-        if (!phone_number.compare(""))
+        if (phone_number.empty() || !isDigit(phone_number))
             std::cout << "Please enter a valid phone number" << '\n';
         else
             break;
@@ -90,7 +92,7 @@ void    Contact::set_darkest_secret(void)
 			std::cout << "Bye bye!" << "\n";
             exit(1);
 		}
-        if (!darkest_secret.compare(""))
+        if (darkest_secret.empty())
             std::cout << "Please enter the darkest secret" << '\n';
         else
             break;
@@ -117,7 +119,6 @@ void	Contact::DisplaySingle(int index)
         std::cout << "Nickname       : " << nickname << std::endl;
         std::cout << "Phone Number   : " << phone_number << std::endl;
         std::cout << "Darkest Secret : " << darkest_secret << std::endl;
-
     }
     else
         std::cout << "There's no contact in index: " << index << std::endl;

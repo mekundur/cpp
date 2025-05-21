@@ -11,6 +11,10 @@
 # include "Contact.hpp"
 # include "PhoneBook.hpp"
 
+std::string ft_strTrim(std::string str);
 std::string ft_truncate(std::string str);
+bool    	isAlphabetic(const std::string& str);
+bool	    isDigit(const std::string& str);
+
 
 #endif

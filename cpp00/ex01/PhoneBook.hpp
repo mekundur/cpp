@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone.hpp                                          :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mekundur <mekundur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:01:48 by mekundur          #+#    #+#             */
-/*   Updated: 2025/05/15 17:31:05 by mekundur         ###   ########.fr       */
+/*   Updated: 2025/05/21 19:49:41 by mekundur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class	PhoneBook
 		~PhoneBook();
 		void	ADD(void);
 		void	SEARCH(void);
-		void	DISPLAY(void);
 		
 	private:
 		Contact contacts[8];
