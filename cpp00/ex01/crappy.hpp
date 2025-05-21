@@ -6,6 +6,7 @@
 # include <stdio.h>
 # include <iostream>
 # include <iomanip>
+# include <limits>
 
 # include "Contact.hpp"
 # include "PhoneBook.hpp"

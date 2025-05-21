@@ -43,7 +43,12 @@ void	PhoneBook::SEARCH(void)
 		contacts[i].DisplayAll(i, &count);
 	if (count){
 		std::cout << "Enter an index number to display all details of respective contact:" << std::endl;
-		while (){
+		std::cin >> display_index;
+		while (!std::cin.good() || !(display_index >= 0 && display_index < 8)){
+			std::cin.clear();			
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n')
+			std::cout << "Enter an index number to display all details of respective contact:" << std::endl;
 			std::cin >> display_index;  //// an integer check must be implemented!
 			
 		}
