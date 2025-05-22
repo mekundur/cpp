@@ -14,18 +14,18 @@
 
 void    Contact::set_first_name(void)
 {
-    std::cout << "First name of the contact" << std::endl;	
+    std::cout << GREEN << "First name of the contact:" << RESET << std::endl;	
     while (1)
     {
-        std::getline(std::cin, first_name);
-        if (std::cin.eof()){	
-			std::cout << "Bye bye!" << "\n";
-            exit(1);
+		if (!std::getline(std::cin, first_name)) {
+			std::cin.clear();
+            clearerr(stdin);
+            continue;
 		}
-        if (first_name.empty() || !isAlphabetic(first_name))
-            std::cout << "Please enter a valid first name" << '\n';
+        if (first_name.empty() || !isAlphabetic(first_name) || is_whiteLine(first_name))
+            std::cout << RED << "Please enter a valid first name:" << RESET << std::endl;
         else {
-            ft_strTrim(first_name);
+            first_name = ft_strTrim(first_name);
             break;
         }
     }
@@ -33,69 +33,77 @@ void    Contact::set_first_name(void)
 
 void    Contact::set_last_name(void)
 {
-    std::cout << "Last name of the contact" << std::endl;	
+    std::cout << GREEN << "Last name of the contact:" << RESET << std::endl;	
     while (1)
     {
-        std::getline(std::cin, last_name);
-        if (std::cin.eof()){	
-			std::cout << "Bye bye!" << "\n";
-            exit(1);
+		if (!std::getline(std::cin, last_name)) {
+			std::cin.clear();
+            clearerr(stdin);
+            continue;
 		}
-        if (last_name.empty() || !isAlphabetic(last_name))
-            std::cout << "Please enter a valid last name" << '\n';
-        else
+        if (last_name.empty() || !isAlphabetic(last_name) || is_whiteLine(last_name))
+            std::cout << RED << "Please enter a valid last name:" << RESET << std::endl;
+        else {
+            last_name = ft_strTrim(last_name);
             break;
+        }
     }
 }
 
 void    Contact::set_nickname(void)
 {
-    std::cout << "Nickname for the contact" << std::endl;	
+    std::cout << GREEN << "Nickname for the contact:" << RESET << std::endl;	
     while (1)
     {
-        std::getline(std::cin, nickname);
-        if (std::cin.eof()){	
-			std::cout << "Bye bye!" << "\n";
-            exit(1);
+		if (!std::getline(std::cin, nickname)) {
+			std::cin.clear();
+            clearerr(stdin);
+            continue;
 		}
-        if (nickname.empty())
-            std::cout << "Please enter a valid nickname" << '\n';
-        else
+        if (nickname.empty() || is_whiteLine(nickname))
+            std::cout << RED << "Please enter a valid nickname:" << RESET << std::endl;
+        else {
+            nickname = ft_strTrim(nickname);
             break;
+        }
     }
 }
 
 void    Contact::set_phone_number(void)
 {
-    std::cout << "Phone number of the contact" << std::endl;	
+    std::cout << GREEN << "Phone number of the contact:" << RESET << std::endl;	
     while (1)
     {
-        std::getline(std::cin, phone_number);
-        if (std::cin.eof()){	
-			std::cout << "Bye bye!" << "\n";
-            exit(1);
+		if (!std::getline(std::cin, phone_number)) {
+			std::cin.clear();
+            clearerr(stdin);
+            continue;
 		}
-        if (phone_number.empty() || !isDigit(phone_number))
-            std::cout << "Please enter a valid phone number" << '\n';
-        else
+        if (phone_number.empty() || !isDigit(phone_number) || is_whiteLine(phone_number))
+            std::cout << RED << "Please enter a valid phone number:" << RESET << std::endl;
+        else {
+            phone_number = ft_strTrim(phone_number);
             break;
+        }
     }
 }
 
 void    Contact::set_darkest_secret(void)
 {
-    std::cout << "Darkest secret of the contact hmm!" << std::endl;	
+    std::cout << GREEN << "Darkest secret of the contact hmm well:" << RESET  << std::endl;	
     while (1)
     {
-        std::getline(std::cin, darkest_secret);
-        if (std::cin.eof()){	
-			std::cout << "Bye bye!" << "\n";
-            exit(1);
+		if (!std::getline(std::cin, darkest_secret)) {
+			std::cin.clear();
+            clearerr(stdin);
+            continue;
 		}
-        if (darkest_secret.empty())
-            std::cout << "Please enter the darkest secret" << '\n';
-        else
+        if (darkest_secret.empty() || is_whiteLine(darkest_secret))
+            std::cout << RED << "Please enter the darkest secret:" << RESET << std::endl;
+        else {
+            darkest_secret = ft_strTrim(darkest_secret);
             break;
+        }
     }
 }
 
@@ -105,7 +113,7 @@ void	Contact::DisplayAll(int i, int *count)
         std::cout << std::setw(10) <<  i << "|";
         std::cout << std::setw(10) << ft_truncate(first_name) << "|";
         std::cout << std::setw(10) << ft_truncate(last_name) << "|";
-        std::cout << std::setw(10) << ft_truncate(nickname) << std::endl;
+        std::cout << std::setw(10) << ft_truncate(nickname) << "|" << std::endl;
         *count += 1;
     }    
 }
@@ -121,7 +129,15 @@ void	Contact::DisplaySingle(int index)
         std::cout << "Darkest Secret : " << darkest_secret << std::endl;
     }
     else
-        std::cout << "There's no contact in index: " << index << std::endl;
+        std::cout << RED << "There's no contact in index: " << RESET << index << std::endl;
+}
 
+Contact::Contact()
+{
+    // std::cout << "Contact is constructed\n";
+}
 
+Contact::~Contact()
+{
+    // std::cout << "Contact is deconstructed\n";
 }

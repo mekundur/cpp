@@ -18,6 +18,9 @@
 class	Contact
 {
 	public:	
+		Contact();
+		~Contact();
+		void    setAttribute(std::string str);
 		void	set_first_name(void);
 		void	set_last_name(void);
 		void	set_nickname(void);

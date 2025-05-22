@@ -18,11 +18,15 @@ int	main(void)
 	std::string	input;
 	while (1)
 	{
-		std::cout << "Please enter a command: ADD or SEARCH or EXIT" << std::endl;
-		std::getline(std::cin, input);
+		std::cout << YELLOW << "Please enter a command: ADD or SEARCH or EXIT" << RESET << std::endl;
+		if (!std::getline(std::cin, input)) {
+			std::cin.clear();
+            clearerr(stdin);
+            continue;
+		}
 		if (!input.compare("EXIT") || !input.compare("exit") || std::cin.eof()){	
-			std::cout << "Bye bye!" << "\n";
-            exit(1);
+			std::cout << CYAN << "BYE BYE DEAR!" << RESET << std::endl;
+			return 0;	
 		}
 		else if (!input.compare("ADD") || !input.compare("add"))
 			myBook.ADD();
