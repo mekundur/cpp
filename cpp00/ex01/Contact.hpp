@@ -6,21 +6,21 @@
 /*   By: mekundur <mekundur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:01:48 by mekundur          #+#    #+#             */
-/*   Updated: 2025/05/21 19:50:53 by mekundur         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:30:36 by mekundur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include "crappy.hpp"
+# include <string>
+# include <iostream>
 
 class	Contact
 {
 	public:	
 		Contact();
 		~Contact();
-		void    setAttribute(std::string str);
 		void	set_first_name(void);
 		void	set_last_name(void);
 		void	set_nickname(void);

@@ -6,11 +6,12 @@
 /*   By: mekundur <mekundur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:07:44 by mekundur          #+#    #+#             */
-/*   Updated: 2025/05/21 20:16:40 by mekundur         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:35:28 by mekundur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "crappy.hpp"
+#include "Contact.hpp"
 
 void    Contact::set_first_name(void)
 {

@@ -2,14 +2,10 @@
 # define CRAPPY_HPP
 
 # include <string>
-# include <stdlib.h>
 # include <stdio.h>
 # include <iostream>
 # include <iomanip>
 # include <limits>
-
-# include "Contact.hpp"
-# include "PhoneBook.hpp"
 
 # define RED     "\033[31m"
 # define GREEN   "\033[32m"
