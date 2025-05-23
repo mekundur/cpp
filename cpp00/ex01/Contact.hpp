@@ -18,7 +18,7 @@
 
 class	Contact
 {
-	public:	
+	public:
 		Contact();
 		~Contact();
 		void	set_first_name(void);

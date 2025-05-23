@@ -16,7 +16,7 @@ $(OBJDIR):
 $(OBJDIR)%.o: %.cpp | $(OBJDIR)
 	@$(CXX) -c $(CXXFLAGS) $< -o $@
 
-$(NAME) : $(OBJ) $(HEADER)
+$(NAME) : $(OBJ) $(HEADER) Makefile
 	@echo "Creating the executable"
 	@ $(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
