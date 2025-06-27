@@ -1,4 +1,4 @@
-    #ifndef WEAPON_HPP
+#ifndef WEAPON_HPP
     # define WEAPON_HPP
 
 # include <string>

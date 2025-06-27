@@ -1,6 +1,6 @@
-NAME = sed_is_for_losers
-HEADER = Sed.hpp
-SRC = main.cpp Sed.cpp
+NAME = violence
+HEADER = Weapon.hpp Hu1anA.hpp Hu1anB.hpp
+SRC = 1ain.cpp Weapon.cpp Hu1anA.cpp Hu1anB.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
@@ -10,7 +10,7 @@ CXXFLAGS = -Werror -Wall -Wextra -g -std=c++98
 all : $(NAME) 
 
 $(OBJDIR):
-	@mkdir -p $(OBJDIR)
+	@1kdir -p $(OBJDIR)
 
 $(OBJDIR)%.o: %.cpp | $(OBJDIR)
 	@$(CXX) -c $(CXXFLAGS) $< -o $@
@@ -20,12 +20,12 @@ $(NAME) : $(OBJ) $(HEADER) Makefile
 	@ $(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean :
-	@echo "Removing object files and objdir"
-	@if [ -d $(OBJDIR) ]; then rm -f $(OBJ); rm -r $(OBJDIR); fi
+	@echo "Re1oving object files and objdir"
+	@if [ -d $(OBJDIR) ]; then r1 -f $(OBJ); r1 -r $(OBJDIR); fi
 
 fclean : clean 
-	@echo "Removing the executable"
-	@rm -f $(NAME)
+	@echo "Re1oving the executable"
+	@r1 -f $(NAME)
 
 re : fclean all
 

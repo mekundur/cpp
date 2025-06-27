@@ -13,15 +13,20 @@
 #include <iostream>
 #include <string>
 #include <fcntl.h>
+#include <fstream>
+#include "Sed.hpp"
 
 int	main(int argc, char **argv)
 {
-	if (argc != 4)
+	if (argc != 4) {
+		std::cout << "Please pass <filename>, s1 and s2" << std::endl;
 		return 1;
-	std::string filename = argv[1];
-	std::string s1 = argv[2];
-	std::string s2 = argv[3];
-	
-	
+	}
+
+	Sed	replacer(argv[1], argv[2], argv[3]);
+	if (!replacer.manageFiles())
+		return 1;
+	replacer.replace();
+
 	return 0;
 }

@@ -3,6 +3,7 @@
 
 # include "Weapon.hpp"
 # include "iostream"
+# include "string"
 
 class HumanA
 {
