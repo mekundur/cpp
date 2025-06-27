@@ -52,5 +52,5 @@ Sed::~Sed()
 {
 	infile.close();
 	outfile.close();
-	std::cout << "Sed run & deconstructed" << std::endl;
+	std::cout << "Files are closed and sed deconstructed" << std::endl;
 }
