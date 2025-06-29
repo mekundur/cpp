@@ -18,7 +18,7 @@ int	main(void)
 	Zombie	*ptr;
 	ptr = zombieHorde(N, "Mertcan");
 	
-	for (int i = 0; i < N; i++){
+	for (int i = 0; i < N; i++) {
         std::cout << i << " " << &ptr[i] << " ";
         ptr[i].announce();
 	}
