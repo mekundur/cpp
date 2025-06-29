@@ -10,6 +10,8 @@ class   Fixed
     static const int    mantissa = 8;
 
     public:
+    int     getRawBits( void ) const;
+    void    setRawBits( int const raw );
     Fixed();
     ~Fixed();
     Fixed(const Fixed& other);
