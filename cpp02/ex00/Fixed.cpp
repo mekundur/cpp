@@ -1,10 +1,11 @@
 #include "Fixed.hpp"
 
 Fixed& Fixed::operator=(const Fixed& other) {
-    exponent = other.exponent;
-    // mantissa = other.mantissa
-    std::cout << "COPY ASSIGNMENT!" << std::endl;
-
+    if (this != & other) {
+        exponent = other.exponent;
+        // mantissa = other.mantissa
+        std::cout << "COPY ASSIGNMENT!" << std::endl;
+    }
     return (*this); //Required for chaining
 }
 
