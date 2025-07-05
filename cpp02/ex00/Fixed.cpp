@@ -22,13 +22,13 @@ Fixed& Fixed::operator=(const Fixed& other) {
 // COPY CONSTRUCTOR
 Fixed::Fixed(const Fixed& other) : exponent(other.exponent) {       
     // std::cout << &this->test << " CONSTRUCTED!" << std::endl;
-    std::cout << "COPY CONSTRCTUION!" << std::endl;
+    std::cout << "COPY CONSTRUCTION!" << std::endl;
 }
 
 // DEFAULT CONSTRUCTOR
 Fixed::Fixed() {
     // std::cout << &this->test << " CONSTRUCTED!" << std::endl;
-    std::cout << "DEFAULT CONSTRCTUION!" << std::endl;
+    std::cout << "DEFAULT CONSTRUCTION!" << std::endl;
 
     exponent = 0;
 }

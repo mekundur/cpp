@@ -29,7 +29,7 @@ class	Contact
 		void	DisplayAll(int i, int *count);
 		void	DisplaySingle(int index);
 
-		private:
+	private:
 		std::string	first_name;
 		std::string	last_name;
 		std::string	nickname;

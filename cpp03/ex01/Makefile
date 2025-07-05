@@ -1,6 +1,6 @@
-NAME = clapTrap
-HEADER = ClapTrap.hpp
-SRC = main.cpp ClapTrap.cpp
+NAME = scavTrap
+HEADER = ClapTrap.hpp ScavTrap.hpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
