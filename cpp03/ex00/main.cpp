@@ -2,18 +2,25 @@
 
 int main (void)
 {
+    ClapTrap    wallE("WALL.E🤖");
+    ClapTrap    eve("EVE🥚");
+    ClapTrap    spaceship("Spaceship🚀");
+    // ClapTrap    *array[3] = {&wallE, &eve, &spaceship};
     
-    ClapTrap wallE((std::string)"WALL.E");
-
     wallE.attack("Spaceship");
-    wallE.takeDamage(5);
+    spaceship.takeDamage(5);
     wallE.beRepaired(3);
+    // array[0]->attack("Spaceship");
 
-    ClapTrap eve("EVE");
-    // eve = wall_e; 
     eve.attack("Spaceship");
-    eve.takeDamage(8);
-    eve.beRepaired(5);    
+    spaceship.takeDamage(8);
+    eve.beRepaired(5);   
+    eve.attack("Spaceship");
+ 
+    spaceship.attack("WALL.E");
+    spaceship.beRepaired(3);
+    spaceship.attack("WALL.E");
+    wallE.takeDamage(8);
 
     return 0;
 }
