@@ -16,7 +16,7 @@
 PhoneBook::PhoneBook()
 {
 	std::cout << CYAN << "WELCOME TO CRAPPY NOTEBOOK!" << RESET << std::endl;
-	std::cout << CYAN << "(Crappy beacuse it's limited to save only 8 contacts!)" << RESET << std::endl;
+	std::cout << CYAN << "(Crappy because it's limited to save only 8 contacts!)" << RESET << std::endl;
 	std::cout << CYAN << "(You can even memorize that amount of details if you try a bit! Anyway...)" << RESET << std::endl << std::endl;
 	index = 0;
 }

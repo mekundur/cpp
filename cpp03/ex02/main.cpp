@@ -1,10 +1,10 @@
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main (void)
 {
     ClapTrap    wallE("WALL.E🤖");
-    ScavTrap    eve("EVE🥚");
+    FragTrap    eve("EVE🥚");
     ClapTrap    spaceship("Spaceship🚀");
     
     wallE.attack("Spaceship");
@@ -13,7 +13,7 @@ int main (void)
 
     eve.attack("Spaceship");
     spaceship.takeDamage(8);
-    eve.guardGate();
+    eve.highFivesGuys();
     eve.beRepaired(5);   
  
     // spaceship.attack("WALL.E");

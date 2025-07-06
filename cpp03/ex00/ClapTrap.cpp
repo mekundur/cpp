@@ -5,7 +5,7 @@ void    ClapTrap::attack(const std::string& target) {
     if  (_hitPoints <= 0 && _energyPoints > 0)
         std::cout << _name << " can't attack because it's dead but you can still revive him!" << std::endl;
     else if (_hitPoints <= 0 && _energyPoints <= 0)
-        std::cout << _name << " can't attack beacuse it's ultimately disintegrated to its cells :(" << std::endl;
+        std::cout << _name << " can't attack because it's ultimately disintegrated to its cells :(" << std::endl;
     else {
         std::cout << RED << this->_name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << RESET << std::endl;
         _energyPoints--;
@@ -57,6 +57,6 @@ ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << this->_name << " is deconstructed" << std::endl;
+    std::cout << this->_name << " is destructed" << std::endl;
 }
         

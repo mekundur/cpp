@@ -140,5 +140,5 @@ Contact::Contact()
 
 Contact::~Contact()
 {
-    // std::cout << "Contact is deconstructed\n";
+    // std::cout << "Contact is destructed\n";
 }

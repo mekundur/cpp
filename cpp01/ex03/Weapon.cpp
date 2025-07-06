@@ -19,5 +19,5 @@ Weapon::Weapon(std::string str)
 
 Weapon::~Weapon()
 {
-    // std::cout << "Weapon is deconstructed!" << std::endl;
+    // std::cout << "Weapon is destructed!" << std::endl;
 }
