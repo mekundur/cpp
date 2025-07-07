@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 
 void Animal::makeSound() const {
-    std::cout << "WrongAnimal has an identity crisis! Doesn't have a unique voice.." << std::endl;
+    std::cout << "Animal has an identity crisis! Doesn't have a unique voice.." << std::endl;
 }
 
 std::string Animal::getType() const {

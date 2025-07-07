@@ -6,8 +6,8 @@ void    FragTrap::highFivesGuys() {
 
 FragTrap::FragTrap() {
     _hitPoints = 100;
-    _energyPoints = 50;
-    _attackDamage = 20; 
+    _energyPoints = 100;
+    _attackDamage = 30; 
     std::cout << CYAN << "FragTrap" << " is constructed by default" << RESET << std::endl;
 }
 

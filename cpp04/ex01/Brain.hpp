@@ -3,6 +3,7 @@
 
 # include <string>
 # include <iostream>
+# include <sstream> 
 
 class   Brain {
 
@@ -11,7 +12,7 @@ class   Brain {
     
     public:
         Brain();
-        Brain(const std::string& _ideas);
+        // Brain(const std::string& _ideas);
         Brain(const Brain& other);
         Brain& operator=(const Brain& other);
         ~Brain();

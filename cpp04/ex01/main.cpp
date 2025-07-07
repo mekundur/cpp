@@ -3,21 +3,26 @@
 #include "Cat.hpp"
 #include "Brain.hpp"
 
+int aSize = 10;
+
 int main(void) {
     {
-        const   Animal* meta = new Animal();
-        const   Animal* j = new Dog();
-        const   Animal* i = new Cat();
+        const   Animal* animals[aSize];
+        
+        for (int i = 0; i < aSize; i++) {            
+            if (i < aSize / 2)
+                animals[i] = new Dog();       
+            else if (i >= aSize / 2)
+                animals[i] = new Cat();
+        }
+        Dog dog1;
+        Dog dog2(dog1);
 
-        std::cout << j->getType() << " " << std::endl;
-        j->makeSound();
-        std::cout << i->getType() << " " << std::endl;
-        i->makeSound();
-        meta->makeSound();
+        // animals[aSize - 1](animals[aSize-2]);
+        // animals[1] = animals[2];
 
-        delete i;
-        delete j;
-        delete meta;
+        for (int i = 0; i < aSize; i++)
+            delete animals[i];
     }
 
     return 0;
