@@ -33,16 +33,6 @@ void    ClapTrap::beRepaired(unsigned int amount) {
 
 }
 
-ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
-    if (this != & other) {
-        _name = other._name;
-        _hitPoints = other._hitPoints;
-        _energyPoints = other._energyPoints;
-        _attackDamage = other._attackDamage;
-        std::cout << YELLOW << "COPY ASSIGNMENT!" << RESET << std::endl;
-    }
-    return (*this);
-}
 
 ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
     std::cout << YELLOW << "ClapTrap " << " is constructed by default" << RESET  << std::endl;
@@ -54,6 +44,17 @@ ClapTrap::ClapTrap(const std::string& str) : _name(str), _hitPoints(10), _energy
 
 ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name), _hitPoints(other._hitPoints), _energyPoints(other._energyPoints), _attackDamage(other._attackDamage) {
     std::cout << YELLOW << "ClapTrap " << this->_name << " is copy constructed" << RESET  << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+    if (this != & other) {
+        _name = other._name;
+        _hitPoints = other._hitPoints;
+        _energyPoints = other._energyPoints;
+        _attackDamage = other._attackDamage;
+        std::cout << YELLOW << "COPY ASSIGNMENT!" << RESET << std::endl;
+    }
+    return (*this);
 }
 
 ClapTrap::~ClapTrap() {

@@ -33,6 +33,18 @@ void    ClapTrap::beRepaired(unsigned int amount) {
 
 }
 
+ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+    std::cout << this->_name << " is constructed by default" << std::endl;
+}
+
+ClapTrap::ClapTrap(const std::string& str) : _name(str), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+    std::cout << this->_name << " is constructed with parameterized constructor" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name), _hitPoints(other._hitPoints), _energyPoints(other._energyPoints), _attackDamage(other._attackDamage) {
+    std::cout << this->_name << " is copy constructed" << std::endl;
+}
+
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
     if (this != & other) {
         _name = other._name;
@@ -42,18 +54,6 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
         std::cout << "COPY ASSIGNMENT!" << std::endl;
     }
     return (*this);
-}
-
-ClapTrap::ClapTrap(const ClapTrap& other) : _name(other._name), _hitPoints(other._hitPoints), _energyPoints(other._energyPoints), _attackDamage(other._attackDamage) {
-    std::cout << this->_name << " is copy constructed" << std::endl;
-}
-
-ClapTrap::ClapTrap(const std::string& str) : _name(str), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << this->_name << " is constructed with parameterized constructor" << std::endl;
-}
-
-ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << this->_name << " is constructed by default" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {

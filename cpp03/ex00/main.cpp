@@ -5,12 +5,10 @@ int main (void)
     ClapTrap    wallE("WALL.E🤖");
     ClapTrap    eve("EVE🥚");
     ClapTrap    spaceship("Spaceship🚀");
-    // ClapTrap    *array[3] = {&wallE, &eve, &spaceship};
     
     wallE.attack("Spaceship");
     spaceship.takeDamage(5);
     wallE.beRepaired(3);
-    // array[0]->attack("Spaceship");
 
     eve.attack("Spaceship");
     spaceship.takeDamage(8);
