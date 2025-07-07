@@ -18,12 +18,12 @@ FragTrap::FragTrap(const std::string& str) : ClapTrap(str) {
     std::cout << CYAN << "FragTrap " << this->_name << " is constructed with parameterized constructor" << RESET << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
+FragTrap::FragTrap(const FragTrap&other) : ClapTrap(other) {
     std::cout << CYAN << "FragTrap " << this->_name << " is copy constructed" << std::endl;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap& other) {
-    if (this != & other) {
+FragTrap& FragTrap::operator=(const FragTrap&other) {
+    if (this != &other) {
         _name = other._name;
         _hitPoints = other._hitPoints;
         _energyPoints = other._energyPoints;
