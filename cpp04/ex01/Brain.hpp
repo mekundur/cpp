@@ -11,6 +11,8 @@ class   Brain {
         std::string _ideas[100];
     
     public:
+        void            setIdea(int index, const std::string& idea);
+        std::string&    getIdea(int index);
         Brain();
         Brain(const Brain& other);
         Brain& operator=(const Brain& other);

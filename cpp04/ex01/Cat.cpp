@@ -1,7 +1,7 @@
 #include "Cat.hpp"
 
 void Cat::makeSound() const {
-    std::cout << "Woff woff! Here I am, the Cat! 😼 " << std::endl;
+    std::cout << "Meooowow! Here I am, the Cat! 😼 " << std::endl;
 }
 
 Cat::Cat() {

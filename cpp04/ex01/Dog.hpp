@@ -12,6 +12,8 @@ class   Dog : public Animal {
         Brain*  _brain;
 
     public:
+        void            setBrainIdea(int index, const std::string& idea);
+        std::string&    getBrainIdea(int index);
         virtual void makeSound() const;
         Dog();
         Dog(const Dog& other);

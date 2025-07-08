@@ -1,11 +1,20 @@
 #include "Dog.hpp"
 
+void    Dog::setBrainIdea(int index, const std::string& idea) {
+    _brain->setIdea(index, idea);
+}
+
+std::string&    Dog::getBrainIdea(int index) {
+    return(_brain->getIdea(index));
+}
+
+
 void Dog::makeSound() const {
     std::cout << "Woff woff! Here I am, the Dog! 🐶 " << std::endl;
 }
 
 Dog::Dog() {
-    _type = "Dog";
+    _type = "Dog 🐶 ";
     _brain = new Brain();
     std::cout << "Dog with a brain is constructed by default constructor 🐶 " << std::endl;
 }

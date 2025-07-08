@@ -15,14 +15,17 @@ int main(void) {
             else if (i >= aSize / 2)
                 animals[i] = new Cat();
         }
-        // Dog dog1;
-        // Dog dog2(dog1);
-
-        // animals[aSize - 1](animals[aSize-2]);
-        // animals[1] = animals[2];
 
         for (int i = 0; i < aSize; i++)
             delete animals[i];
+    }
+    std::cout << std::endl;
+    {
+        Dog dog1;
+        Dog dog2(dog1);
+        dog1.setBrainIdea(5, "Let's fight nihahaha");
+        std::cout << dog1.getBrainIdea(5) << std::endl;
+        std::cout << dog2.getBrainIdea(5) << std::endl;
     }
 
     return 0;

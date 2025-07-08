@@ -1,5 +1,13 @@
 #include "Brain.hpp"
 
+void    Brain::setIdea(int index, const std::string& idea) {
+    _ideas[index] = idea;
+}
+
+std::string&    Brain::getIdea(int index) {
+    return (_ideas[index]);
+}
+
 Brain::Brain() {
     for (int i = 0; i < 100; i++) {
         std::ostringstream  tmp;
