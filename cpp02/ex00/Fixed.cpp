@@ -2,38 +2,32 @@
 
 int     Fixed::getRawBits( void ) const {
     std::cout << "getRawBits member function called" << std::endl;
-    return (exponent);
+    return (_number);
 }
 
 void    Fixed::setRawBits( int const raw ) {
-    exponent = raw;
+    _number = raw;
 }
 
-// COPY ASSIGNEMNT (with OPERATOR OVERLOADING)
+Fixed::Fixed() {
+    // std::cout << &this->test << " CONSTRUCTED!" << std::endl;
+    _number = 0;
+    std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const Fixed& other) : _number(other._number) {       
+    // std::cout << &this->test << " CONSTRUCTED!" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
+}
+
 Fixed& Fixed::operator=(const Fixed& other) {
     if (this != & other) {
-        exponent = other.exponent;
-        // mantissa = other.mantissa
-        std::cout << "COPY ASSIGNMENT!" << std::endl;
+        _number = other._number;
+        std::cout << "Copy assignment operator called" << std::endl;
     }
     return (*this);
 }
 
-// COPY CONSTRUCTOR
-Fixed::Fixed(const Fixed& other) : exponent(other.exponent) {       
-    // std::cout << &this->test << " CONSTRUCTED!" << std::endl;
-    std::cout << "COPY CONSTRUCTION!" << std::endl;
-}
-
-// DEFAULT CONSTRUCTOR
-Fixed::Fixed() {
-    // std::cout << &this->test << " CONSTRUCTED!" << std::endl;
-    std::cout << "DEFAULT CONSTRUCTION!" << std::endl;
-
-    exponent = 0;
-}
-
-// DESTRUCTOR
-Fixed::~Fixed() { // DESTRUCTOR
-    std::cout << "DESTRUCTION!" << std::endl;
+Fixed::~Fixed() {
+    std::cout << "Destructor called" << std::endl;
 }

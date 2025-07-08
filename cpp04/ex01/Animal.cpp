@@ -12,10 +12,6 @@ Animal::Animal() {
     std::cout << "Animal is constructed by default constructor" << std::endl;
 }
 
-Animal::Animal(const std::string& type) : _type(type) {
-    std::cout << "Animal is constructed by parameterized constructor" << std::endl;
-}
-
 Animal::Animal(const Animal& other) : _type(other._type) {
     std::cout << "Animal is constructed by copy constructor" << std::endl;
 }

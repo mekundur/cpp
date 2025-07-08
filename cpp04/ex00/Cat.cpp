@@ -9,10 +9,6 @@ Cat::Cat() {
     std::cout << "Cat is constructed by default constructor 😼" << std::endl;
 }
 
-Cat::Cat(const std::string& type) : Animal(type) {
-    std::cout << "Cat is constructed by parameterized constructor 😼" << std::endl;
-}
-
 Cat::Cat(const Cat& other) : Animal(other) {
     std::cout << "Cat is constructed by copy constructor 😼" << std::endl;
 }

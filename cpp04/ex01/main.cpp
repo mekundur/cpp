@@ -3,7 +3,7 @@
 #include "Cat.hpp"
 #include "Brain.hpp"
 
-int aSize = 10;
+int aSize = 4;
 
 int main(void) {
     {
@@ -15,8 +15,8 @@ int main(void) {
             else if (i >= aSize / 2)
                 animals[i] = new Cat();
         }
-        Dog dog1;
-        Dog dog2(dog1);
+        // Dog dog1;
+        // Dog dog2(dog1);
 
         // animals[aSize - 1](animals[aSize-2]);
         // animals[1] = animals[2];

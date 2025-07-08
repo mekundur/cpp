@@ -10,7 +10,7 @@ Dog::Dog() {
     std::cout << "Dog with a brain is constructed by default constructor 🐶 " << std::endl;
 }
 
-Dog::Dog(const Dog& other) : Animal(other) {
+Dog::Dog(const Dog& other) : AAnimal(other) {
     _brain = new Brain(*other._brain);
     std::cout << "Dog with a brain is constructed by copy constructor 🐶 " << std::endl;
 }

@@ -6,18 +6,18 @@
 class   Fixed
 {
     private:
-    int                 exponent;
-    static const int    mantissa = 8;
+        int                 _number;
+        static const int    _mantissa = 8;
 
     public:
-    int     getRawBits( void ) const;
-    void    setRawBits( int const raw );
-    Fixed();
-    ~Fixed();
-    Fixed(const Fixed& other);
-    Fixed& operator=(const Fixed& other);
+        int     getRawBits(void) const;
+        void    setRawBits(int const raw);
+        Fixed();
+        Fixed(const Fixed& other);
+        Fixed& operator=(const Fixed& other);
+        ~Fixed();
+
 
 };
-
 
 #endif

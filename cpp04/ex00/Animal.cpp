@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 
 void Animal::makeSound() const {
-    std::cout << "WrongAnimal has an identity crisis! Doesn't have a unique voice.." << std::endl;
+    std::cout << "Animal has an identity crisis! Doesn't have a unique voice.." << std::endl;
 }
 
 std::string Animal::getType() const {
@@ -10,10 +10,6 @@ std::string Animal::getType() const {
 
 Animal::Animal() {
     std::cout << "Animal is constructed by default constructor" << std::endl;
-}
-
-Animal::Animal(const std::string& type) : _type(type) {
-    std::cout << "Animal is constructed by parameterized constructor" << std::endl;
 }
 
 Animal::Animal(const Animal& other) : _type(other._type) {

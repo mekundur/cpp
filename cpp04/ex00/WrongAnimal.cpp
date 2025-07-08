@@ -12,10 +12,6 @@ WrongAnimal::WrongAnimal() {
     std::cout << "WrongAnimal is constructed by default constructor" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const std::string& type) : _type(type) {
-    std::cout << "WrongAnimal is constructed by parameterized constructor" << std::endl;
-}
-
 WrongAnimal::WrongAnimal(const WrongAnimal& other) : _type(other._type) {
     std::cout << "WrongAnimal is constructed by copy constructor" << std::endl;
 }

@@ -9,10 +9,6 @@ WrongCat::WrongCat() {
     std::cout << "WrongCat is constructed by default constructor 😼" << std::endl;
 }
 
-WrongCat::WrongCat(const std::string& type) : WrongAnimal(type) {
-    std::cout << "WrongCat is constructed by parameterized constructor 😼" << std::endl;
-}
-
 WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other) {
     std::cout << "WrongCat is constructed by copy constructor 😼" << std::endl;
 }

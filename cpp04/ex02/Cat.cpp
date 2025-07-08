@@ -10,7 +10,7 @@ Cat::Cat() {
     std::cout << "Cat with a brain is constructed by default constructor 😼 " << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal(other) {
+Cat::Cat(const Cat& other) : AAnimal(other) {
     _brain = new Brain(*other._brain);
     std::cout << "Cat with a brain is constructed by copy constructor 😼 " << std::endl;
 }

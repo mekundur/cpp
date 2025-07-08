@@ -9,10 +9,6 @@ Dog::Dog() {
     std::cout << "Dog is constructed by default constructor 🐶 " << std::endl;
 }
 
-Dog::Dog(const std::string& type) : Animal(type) {
-    std::cout << "Dog is constructed by parameterized constructor 🐶 " << std::endl;
-}
-
 Dog::Dog(const Dog& other) : Animal(other) {
     std::cout << "Dog is constructed by copy constructor 🐶 " << std::endl;
 }
