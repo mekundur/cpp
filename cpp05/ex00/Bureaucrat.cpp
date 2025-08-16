@@ -16,10 +16,13 @@ Bureaucrat::~Bureaucrat() {
     std::cout << "Bureaucrat is destructed" << std::endl;
 }
 
+// void    Bureaucrat::GradeTooHighException()
+
 void    Bureaucrat::getName() {
-    std::cout << _name;
+    std::cout << "Name: " << _name << std::endl;
 }
 
-void    Bureaucrat::getGrade() {
-    std::cout << _grade;
+int Bureaucrat::getGrade() {
+    std::cout << "Grade: " << _grade << std::endl;
+    return _grade;
 }
