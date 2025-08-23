@@ -1,7 +1,10 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main (void)
 {
+    Form aForm;
+
     try {
         Bureaucrat  b("Person1", 0);
         std::cout << b << std::endl;

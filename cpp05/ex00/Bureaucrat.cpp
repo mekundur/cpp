@@ -31,7 +31,7 @@ int Bureaucrat::getGrade() const {
 }
 
 // orthodox canonical form / rule of three (+one)
-Bureaucrat::Bureaucrat() {
+Bureaucrat::Bureaucrat() : _name("Default") {
     if (_grade < 1)
         throw   GradeTooHighException();
     else if (_grade > 150)
