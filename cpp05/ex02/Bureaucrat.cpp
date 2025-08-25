@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
     return ("Grade is too high!\n");
@@ -19,7 +20,17 @@ void    Bureaucrat::gradeDecrement() {
         throw   GradeTooLowException();    
     _grade++;
 }
-        
+
+void    Bureaucrat::signAForm(AForm& AForm) {
+    try {
+        AForm.beSigned(*this);
+    }
+    catch(std::exception& e) {
+        std::cout << this->_name << " couldn't sign " << AForm.getName() << " because " << e.what();
+    }
+}
+
+// *** Getter methods:    
 const std::string&    Bureaucrat::getName() const {
     // std::cout << "Name: " << _name << std::endl;
     return _name;
@@ -30,13 +41,15 @@ int Bureaucrat::getGrade() const {
     return _grade;
 }
 
-// orthodox canonical form / rule of three (+one)
+// *** Constructors + Destructor + Overload of (<<)
+// *** Orthodox canonical AForm / rule of three (+one)
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
     if (_grade < 1)
         throw   GradeTooHighException();
     else if (_grade > 150)
         throw   GradeTooLowException();
-    std::cout << "Bureaucrat is constructed" << std::endl;
+    else
+        std::cout << "Bureaucrat is constructed" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade) {
@@ -44,7 +57,8 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade
         throw   GradeTooHighException();
     else if (_grade > 150)
         throw   GradeTooLowException();
-    std::cout << "Bureucrat is parameterizely constructed" << std::endl;
+    else
+        std::cout << "Bureucrat is parameterizely constructed" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {

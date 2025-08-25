@@ -1,10 +1,12 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main (void)
 {
     try {
-        Form    form("Form", 10, 0);
+        ShrubberyCreationForm    form;
+        std::cout << form << std::endl;
     }
     catch(std::exception &e) {
         std::cout << e.what();
@@ -12,33 +14,33 @@ int main (void)
     std::cout << std::endl;
 
     try {
-        Form form("project", 50, 25);
+        ShrubberyCreationForm    form("defaultTarget");
         Bureaucrat  b("Person", 1);
 
         std::cout << form << std::endl;    
-        // form.beSigned(b);
-        b.signForm(form);
+        // AForm.beSigned(b);
+        b.signAForm(form);
         std::cout << form << std::endl; 
-        b.signForm(form);
+        b.signAForm(form);
     }
     catch (std::exception& e) {
         std::cout << e.what();
     }
     std::cout << std::endl;
-    
+/*    
     try {
-        Form form("project", 50, 25);
+        AForm AForm("project", 50, 25);
         Bureaucrat  b("Person", 150);
 
-        std::cout << form << std::endl;    
-        // form.beSigned(b);
-        b.signForm(form);
-        std::cout << form << std::endl;    
+        std::cout << AForm << std::endl;    
+        // AForm.beSigned(b);
+        b.signAForm(AForm);
+        std::cout << AForm << std::endl;    
     }
     catch (std::exception& e) {
         std::cout << e.what();
     }
     std::cout << std::endl;
 
-    return (0);
+*/    return (0);
 }

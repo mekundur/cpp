@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 const char* Form::GradeTooHighException::what() const throw() {
     return ("Grade is too high!\n");
@@ -7,8 +8,24 @@ const char* Form::GradeTooHighException::what() const throw() {
 const char* Form::GradeTooLowException::what() const throw() {
     return ("Grade is too low!\n");
 }
-      
-std::string    Form::getName() const {
+
+const char* Form::AlreadySigned::what() const throw() {
+    return ("It's already signed!\n");
+}
+
+void    Form::beSigned(Bureaucrat& person) {
+    if (_signed == 1)
+        throw AlreadySigned();
+    else if (person.getGrade() > this->getGradeSign())
+        throw GradeTooLowException();
+    else {
+        this->_signed = 1;
+        std::cout << person.getName() << " signed " << this->getName() << std::endl;
+    }
+}
+
+// *** Getter methods:    
+const std::string&  Form::getName() const {
     // std::cout << "Name: " << _name << std::endl;
     return _name;
 }
@@ -23,7 +40,13 @@ int Form::getGradeExec() const {
     return _gradeExec;
 }
 
-// orthodox canonical form / rule of three (+one)
+bool Form::getSigned() const {
+    // std::cout << "Grade: " << _grade << std::endl;
+    return _signed;
+}
+
+// *** Constructors + Destructor + Overload of (<<)
+// *** Orthodox canonical form / rule of three (+one)
 Form::Form() :
     _name("Default"),
     _signed(0),
@@ -36,16 +59,16 @@ Form::Form() :
         std::cout << "Form is constructed" << std::endl;
 }
 
-Form::Form(const std::string& name, int grade) :
-    _name("Default"),
+Form::Form(const std::string& name, int sign, int exec) :
+    _name(name),
     _signed(0),
-    _gradeSign(1),
-    _gradeExec(1) {
+    _gradeSign(sign),
+    _gradeExec(exec) {
         if (_gradeSign < 1 || _gradeExec < 1)
             throw   GradeTooHighException();
         else if (_gradeSign > 150 || _gradeExec > 150)
             throw   GradeTooLowException();
-        std::cout << "Bureucrat is parameterizely constructed" << std::endl;
+        std::cout << "Form is parameterizely constructed" << std::endl;
 }
 
 Form::Form(const Form& other) :
@@ -53,7 +76,7 @@ Form::Form(const Form& other) :
     _signed(other._signed),
     _gradeSign(other._gradeSign),
     _gradeExec(other._gradeExec) {
-        std::cout << "Bureucrat is copy-constructed" << std::endl;
+        std::cout << "Form is copy-constructed" << std::endl;
 }
 
 Form& Form::operator=(const Form& other) {
@@ -71,6 +94,6 @@ Form::~Form() {
 }
 
 std::ostream& operator<<(std::ostream& out, const Form& Form) {
-    return (out << Form.getName() << ", Form signing grade: " << Form.getGradeSign()
-                << "Form exectuing grade:" << Form.getGradeExec());
+    return (out << Form.getName() << ", Signing grade: " << Form.getGradeSign()
+                << ", Executing grade: " << Form.getGradeExec() << ", Sign: " << Form.getSigned());
 }

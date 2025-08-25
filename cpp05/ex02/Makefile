@@ -1,6 +1,8 @@
 NAME = bureaucrat
-HEADER = Bureaucrat.hpp Form.hpp
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+HEADER = Bureaucrat.hpp AForm.hpp \
+		ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp \
+		ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
