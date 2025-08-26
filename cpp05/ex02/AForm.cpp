@@ -85,7 +85,7 @@ AForm::~AForm() {
     std::cout << "AForm is destructed" << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& out, const AForm& AForm) {
-    return (out << AForm.getName() << ", Signing grade: " << AForm.getGradeSign()
-                << ", Executing grade: " << AForm.getGradeExec() << ", Sign: " << AForm.getSigned());
+std::ostream& operator<<(std::ostream& out, const AForm& form) {
+    return (out << form.getName() << ", Signing grade: " << form.getGradeSign()
+                << ", Executing grade: " << form.getGradeExec() << ", Sign: " << form.getSigned());
 }

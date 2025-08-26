@@ -6,12 +6,10 @@
 # include <exception>
 # include "AForm.hpp"
 
-class Bureaucrat;
-
 class ShrubberyCreationForm : public AForm 
 {
     private:
-        const std::string   _target;
+        std::string   _target;
 
     public:
         ShrubberyCreationForm();
@@ -21,6 +19,6 @@ class ShrubberyCreationForm : public AForm
         ~ShrubberyCreationForm();
 };
 
-std::ostream& operator<<(std::ostream& out, const ShrubberyCreationForm& AForm);
+std::ostream& operator<<(std::ostream& out, const ShrubberyCreationForm& form);
 
 #endif
