@@ -4,6 +4,7 @@
 # include <string>
 # include <iostream>
 # include <exception>
+# include <fstream>
 # include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm 
@@ -12,6 +13,9 @@ class ShrubberyCreationForm : public AForm
         std::string   _target;
 
     public:
+        virtual void    execute(Bureaucrat const & executor) const;
+        std::string     getTarget() const;
+
         ShrubberyCreationForm();
         ShrubberyCreationForm(const std::string& target);
         ShrubberyCreationForm(const ShrubberyCreationForm& other);

@@ -3,7 +3,9 @@
 
 # include <string>
 # include <iostream>
+# include <fstream>
 # include <exception>
+# include <stdint.h>
 
 class Bureaucrat;
 
@@ -21,6 +23,7 @@ class AForm
         int                 getGradeExec() const;
         bool                getSigned() const;
         void                beSigned(Bureaucrat& person);
+        virtual void        execute(Bureaucrat const & executor) const =0;
 
         AForm();
         AForm(const std::string& name, int sign, int exec);
@@ -38,7 +41,12 @@ class AForm
             virtual const char* what() const throw();
     };
 
-    class AlreadySigned : public std::exception {
+    class AlreadySignedException : public std::exception {
+        public:
+            virtual const char* what() const throw();
+    };
+
+    class NotSignedException : public std::exception {
         public:
             virtual const char* what() const throw();
     };

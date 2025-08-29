@@ -1,6 +1,25 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
+void    Bureaucrat::executeForm(AForm const & form) const {
+    try {
+        form.execute(*this);
+    }
+    catch (std::exception& e) {
+        std::cout << this->_name << " couldn't execute " << form.getName() << " because " << e.what();
+    }
+}
+
+void    Bureaucrat::signAForm(AForm& AForm) {
+    try {
+        AForm.beSigned(*this);
+    }
+    catch(std::exception& e) {
+        std::cout << this->_name << " couldn't sign " << AForm.getName() << " because " << e.what();
+    }
+}
+
+// *** Getter methods:    
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
     return ("Grade is too high!\n");
 }
@@ -9,6 +28,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return ("Grade is too low!\n");
 }
 
+// *** Grade manipulating methods:    
 void    Bureaucrat::gradeIncrement() {
     if (_grade <= 1)
         throw   GradeTooHighException();
@@ -19,15 +39,6 @@ void    Bureaucrat::gradeDecrement() {
     if (_grade >= 150)
         throw   GradeTooLowException();    
     _grade++;
-}
-
-void    Bureaucrat::signAForm(AForm& AForm) {
-    try {
-        AForm.beSigned(*this);
-    }
-    catch(std::exception& e) {
-        std::cout << this->_name << " couldn't sign " << AForm.getName() << " because " << e.what();
-    }
 }
 
 // *** Getter methods:    
@@ -49,7 +60,7 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
     else if (_grade > 150)
         throw   GradeTooLowException();
     else
-        std::cout << "Bureaucrat is constructed" << std::endl;
+        DEBUG_PRINT("Bureaucrat constructed");
 }
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade) {
@@ -58,11 +69,11 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade
     else if (_grade > 150)
         throw   GradeTooLowException();
     else
-        std::cout << "Bureucrat is parameterizely constructed" << std::endl;
+        DEBUG_PRINT("Bureucrat is parameterizely constructed");
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
-    std::cout << "Bureucrat is copy-constructed" << std::endl;
+    DEBUG_PRINT("Bureucrat is copy-constructed");
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
@@ -74,7 +85,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << "Bureaucrat is destructed" << std::endl;
+    DEBUG_PRINT("Bureaucrat is destructed");
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat) {

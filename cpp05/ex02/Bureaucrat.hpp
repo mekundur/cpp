@@ -19,6 +19,7 @@ class Bureaucrat
         void                gradeIncrement();
         void                gradeDecrement();
         void                signAForm(AForm& AForm);
+        void                executeForm(AForm const & form) const;
 
         Bureaucrat();
         Bureaucrat(const std::string& name, int grade);
@@ -38,5 +39,12 @@ class Bureaucrat
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat);
+
+# pragma once
+# ifdef DEBUG
+# define DEBUG_PRINT(x) do { std::cerr << x << std::endl; } while(0)
+# else
+# define DEBUG_PRINT(x) do {} while(0)
+# endif
 
 #endif

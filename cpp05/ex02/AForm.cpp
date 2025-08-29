@@ -1,6 +1,27 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
+void    AForm::execute(Bureaucrat const & executor) const {
+    if (this->getSigned() == 0)
+        throw NotSignedException();
+    else if (executor.getGrade() > this->getGradeExec())
+        throw GradeTooLowException();
+    else
+        std::cout << executor.getName() << " executed " << this->getName() << std::endl;   
+}
+
+void    AForm::beSigned(Bureaucrat& person) {
+    if (_signed == 1)
+        throw AlreadySignedException();
+    else if (person.getGrade() > this->getGradeSign())
+        throw GradeTooLowException();
+    else {
+        this->_signed = 1;
+        std::cout << person.getName() << " signed " << this->getName() << std::endl;
+    }
+}
+
+// *** Exceptions methods:
 const char* AForm::GradeTooHighException::what() const throw() {
     return ("Grade is too high!\n");
 }
@@ -9,19 +30,12 @@ const char* AForm::GradeTooLowException::what() const throw() {
     return ("Grade is too low!\n");
 }
 
-const char* AForm::AlreadySigned::what() const throw() {
-    return ("It's already signed!\n");
+const char* AForm::AlreadySignedException::what() const throw() {
+    return ("The form is already signed!\n");
 }
 
-void    AForm::beSigned(Bureaucrat& person) {
-    if (_signed == 1)
-        throw AlreadySigned();
-    else if (person.getGrade() > this->getGradeSign())
-        throw GradeTooLowException();
-    else {
-        this->_signed = 1;
-        std::cout << person.getName() << " signed " << this->getName() << std::endl;
-    }
+const char* AForm::NotSignedException::what() const throw() {
+    return ("Form is not signed!\n");
 }
 
 // *** Getter methods:    
@@ -52,7 +66,7 @@ AForm::AForm() :
             throw   GradeTooHighException();
         else if (_gradeSign > 150 || _gradeExec > 150)
             throw   GradeTooLowException();
-        std::cout << "AForm is constructed" << std::endl;
+        DEBUG_PRINT("AForm is constructed");
 }
 
 AForm::AForm(const std::string& name, int sign, int exec) :
@@ -64,7 +78,7 @@ AForm::AForm(const std::string& name, int sign, int exec) :
             throw   GradeTooHighException();
         else if (_gradeSign > 150 || _gradeExec > 150)
             throw   GradeTooLowException();
-        std::cout << "AForm is parameterizely constructed" << std::endl;
+        DEBUG_PRINT("AForm is parameterizely constructed");
 }
 
 AForm::AForm(const AForm& other) :
@@ -72,7 +86,7 @@ AForm::AForm(const AForm& other) :
     _signed(other._signed),
     _gradeSign(other._gradeSign),
     _gradeExec(other._gradeExec) {
-        std::cout << "AForm is copy-constructed" << std::endl;
+        DEBUG_PRINT("AForm is copy-constructed");
 }
 
 AForm& AForm::operator=(const AForm& other) {
@@ -82,7 +96,7 @@ AForm& AForm::operator=(const AForm& other) {
 }
 
 AForm::~AForm() {
-    std::cout << "AForm is destructed" << std::endl;
+    DEBUG_PRINT("AForm is destructed");
 }
 
 std::ostream& operator<<(std::ostream& out, const AForm& form) {

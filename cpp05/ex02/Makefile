@@ -11,6 +11,9 @@ CXXFLAGS = -Werror -Wall -Wextra -g -std=c++98
 
 all : $(NAME) 
 
+debug: CXXFLAGS += -DDEBUG
+debug: re
+
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 

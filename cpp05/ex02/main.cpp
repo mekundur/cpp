@@ -1,46 +1,34 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main (void)
 {
+    std::srand(time(NULL));
+    // AForm aform;
     try {
-        ShrubberyCreationForm    form;
-        std::cout << form << std::endl;
+        Bureaucrat  b("Mertcan", 5);
+        std::cout << b << std::endl;
+        ShrubberyCreationForm   formS("FormS");
+        RobotomyRequestForm     formR("FormR");
+        PresidentialPardonForm  formP("FormP");
+        std::cout << formS << std::endl;
+        std::cout << formR << std::endl;
+        std::cout << formP << std::endl;
+        b.signAForm(formS);
+        b.signAForm(formR);
+        b.signAForm(formP);
+        std::cout << formS << std::endl;
+        std::cout << formR << std::endl;
+        std::cout << formP << std::endl;        
+        b.executeForm(formS);
+        b.executeForm(formR);
+        b.executeForm(formP);
     }
     catch(std::exception &e) {
         std::cout << e.what();
     }
-    std::cout << std::endl;
-
-    try {
-        ShrubberyCreationForm    form("defaultTarget");
-        Bureaucrat  b("Person", 1);
-
-        std::cout << form << std::endl;    
-        // AForm.beSigned(b);
-        b.signAForm(form);
-        std::cout << form << std::endl; 
-        b.signAForm(form);
-    }
-    catch (std::exception& e) {
-        std::cout << e.what();
-    }
-    std::cout << std::endl;
-/*    
-    try {
-        AForm AForm("project", 50, 25);
-        Bureaucrat  b("Person", 150);
-
-        std::cout << AForm << std::endl;    
-        // AForm.beSigned(b);
-        b.signAForm(AForm);
-        std::cout << AForm << std::endl;    
-    }
-    catch (std::exception& e) {
-        std::cout << e.what();
-    }
-    std::cout << std::endl;
-
-*/    return (0);
+    return (0);
 }
