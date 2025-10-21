@@ -6,21 +6,16 @@
 
 class ScalarConverter
 {
+    private:
+        static int          t;
+        ScalarConverter();
+
     public:
-        static void hello(){
-            std::cout << "Hello\n"; 
-        }
-    // private:
-        static int t;
         static void convert(std::string str);
-        ScalarConverter(/* args */) {
-            std::cout << "Constructed\n";
+        static void hello() {
+            std::cout << t << " Hello\n"; 
         }
-        ~ScalarConverter() {
-            std::cout << "Destructed\n";
-        }
+
 };
-
-
 
 #endif
