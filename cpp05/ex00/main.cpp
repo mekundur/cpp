@@ -3,40 +3,45 @@
 int main (void)
 {
     try {
-        Bureaucrat  b("Person1", 0);
+        Bureaucrat  b("PERSON1", 0);
         std::cout << b << std::endl;
         while (b.getGrade() >= 0)
             b.gradeIncrement();
-          std::cout << b << "CHECKPOINT\n" << std::endl;
+        std::cout << b << "CHECKPOINT\n" << std::endl;
     }
     catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }
+    std::cout << std::endl;
 
     try {
-        Bureaucrat  b("Person2", 151);
+        Bureaucrat  b("PERSON2", 151);
         std::cout << b << std::endl;
         while (b.getGrade() >= 0)
             b.gradeIncrement();
-          std::cout << b << "CHECKPOINT\n" << std::endl;
+        std::cout << b << "CHECKPOINT\n" << std::endl;
     }
     catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }
+    std::cout << std::endl;
 
     try {
-        Bureaucrat  b("Person3", 1);
+        Bureaucrat  b("PERSON3", 2);
         std::cout << b << std::endl;
-        while (b.getGrade() >= 0)
+        while (b.getGrade() >= 0) {
             b.gradeIncrement();
-          std::cout << b << "CHECKPOINT\n" << std::endl;
+            std::cout << b << std::endl;
+        }
+        std::cout << b << "CHECKPOINT\n" << std::endl;
     }
     catch (std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }
+    std::cout << std::endl;
 
     try {
-        Bureaucrat  b("Person4", 145);
+        Bureaucrat  b("PERSON4", 145);
         std::cout << b << std::endl;
         while (b.getGrade() <= 150)
             b.gradeDecrement();
