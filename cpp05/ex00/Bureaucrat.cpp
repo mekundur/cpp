@@ -21,12 +21,10 @@ void    Bureaucrat::gradeDecrement() {
 }
         
 const std::string&    Bureaucrat::getName() const {
-    // std::cout << "Name: " << _name << std::endl;
     return _name;
 }
 
 int Bureaucrat::getGrade() const {
-    // std::cout << "Grade: " << _grade << std::endl;
     return _grade;
 }
 
