@@ -6,7 +6,7 @@ int main(void) {
         int j = 2;
         std::cout << i << std::endl;
         std::cout << j << std::endl;
-        swap(i, j);
+        ::swap(i, j);
         std::cout << i << std::endl;
         std::cout << j << std::endl;
     }
@@ -24,7 +24,7 @@ int main(void) {
         std::string j = "can";
         std::cout << i << std::endl;
         std::cout << j << std::endl;
-        swap(i, j);
+        ::swap(i, j);
         std::cout << i << std::endl;
         std::cout << j << std::endl;
     }

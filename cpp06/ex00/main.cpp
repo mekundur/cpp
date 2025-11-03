@@ -18,6 +18,4 @@ int main (int argc, char **argv) {
 
     ScalarConverter::hello();
     ScalarConverter::convert(argv[1]);
-    
-
 }
