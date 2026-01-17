@@ -1,4 +1,5 @@
 #include "Array.hpp"
+#include <exception>
 
 int main(void) {
     try {
