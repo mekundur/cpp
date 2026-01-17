@@ -5,14 +5,13 @@ SRC = main.cpp Bureaucrat.cpp AForm.cpp \
 		ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
-
 CXX = c++
 CXXFLAGS = -Werror -Wall -Wextra -g -std=c++98
 
-all : $(NAME) 
-
 debug: CXXFLAGS += -DDEBUG
 debug: re
+
+all : $(NAME) 
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)

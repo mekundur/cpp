@@ -3,9 +3,11 @@ HEADER = Bureaucrat.hpp
 SRC = main.cpp Bureaucrat.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
-
 CXX = c++
 CXXFLAGS = -Werror -Wall -Wextra -g -std=c++98
+
+debug: CXXFLAGS += -DDEBUG
+debug: re
 
 all : $(NAME) 
 

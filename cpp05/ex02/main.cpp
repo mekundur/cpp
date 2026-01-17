@@ -6,6 +6,11 @@
 
 int main (void)
 {
+    if (1)
+        DEBUG_PRINT("MMMEELLLOOOOOOO");
+    else
+        std::cout << "HEYYYAAAAAA\n";
+
     std::srand(time(NULL));
     // AForm aform;
     try {

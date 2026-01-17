@@ -23,16 +23,12 @@ void Bureaucrat::gradeDecrement()
         throw GradeTooLowException();
     _grade++;
 }
-
-const std::string &Bureaucrat::getName() const
-{
-    // std::cout << "Name: " << _name << std::endl;
+        
+const std::string&    Bureaucrat::getName() const {
     return _name;
 }
 
-int Bureaucrat::getGrade() const
-{
-    // std::cout << "Grade: " << _grade << std::endl;
+int Bureaucrat::getGrade() const {
     return _grade;
 }
 
