@@ -37,7 +37,8 @@ class Array {
             return (*this);
         };
 
-        // overloading of [] operator to access array elements through class type 
+        // overloading of [] operator to 
+        // access array elements through type T 
         T& operator[](int i) {
             return (_data[check(i)]);
         };

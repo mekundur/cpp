@@ -1,5 +1,5 @@
-NAME = easyfind
-HEADER = easyfind.hpp
+NAME = mutantStack
+HEADER = MutantStack.hpp
 SRC = main.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
