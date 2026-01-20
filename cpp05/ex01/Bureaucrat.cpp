@@ -1,82 +1,84 @@
 #include "Bureaucrat.hpp"
+#include <iostream>
 #include "Form.hpp"
 
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return ("Grade is too high!\n");
-}
-
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return ("Grade is too low!\n");
-}
-
-void    Bureaucrat::gradeIncrement() {
-    if (_grade <= 1)
-        throw   GradeTooHighException();
-    _grade--;
-}
-
-void    Bureaucrat::gradeDecrement() {
-    if (_grade >= 150)
-        throw   GradeTooLowException();    
-    _grade++;
-}
-
-void    Bureaucrat::signForm(Form& form) {
-    try {
-        form.beSigned(*this);
-    }
-    catch(std::exception& e) {
-        std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what();
-    }
-}
-
-// *** Getter methods:    
-const std::string&    Bureaucrat::getName() const {
-    // std::cout << "Name: " << _name << std::endl;
-    return _name;
-}
-
-int Bureaucrat::getGrade() const {
-    // std::cout << "Grade: " << _grade << std::endl;
-    return _grade;
-}
-
-// *** Constructors + Destructor + Overload of (<<)
 // *** Orthodox canonical form / rule of three (+one)
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
-    if (_grade < 1)
-        throw   GradeTooHighException();
-    else if (_grade > 150)
-        throw   GradeTooLowException();
-    else
-        std::cout << "Bureaucrat is constructed" << std::endl;
+  if (_grade < 1)
+    throw GradeTooHighException();
+  else if (_grade > 150)
+    throw GradeTooLowException();
+  DEBUG_PRINT("Bureaucrat is default constructed");
 }
 
-Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade) {
-    if (_grade < 1)
-        throw   GradeTooHighException();
-    else if (_grade > 150)
-        throw   GradeTooLowException();
-    else
-        std::cout << "Bureucrat is parameterizely constructed" << std::endl;
+Bureaucrat::Bureaucrat(const std::string name, int grade)
+    : _name(name), _grade(grade) {
+  if (_grade < 1)
+    throw GradeTooHighException();
+  else if (_grade > 150)
+    throw GradeTooLowException();
+  DEBUG_PRINT("Bureucrat is constructed\n");
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
-    std::cout << "Bureucrat is copy-constructed" << std::endl;
+Bureaucrat::Bureaucrat(const Bureaucrat& other)
+    : _name(other._name), _grade(other._grade) {
+  DEBUG_PRINT("Bureaucrat is copy-constructed\n");
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
-    if (this != & other) {
-        // this->_name = other._name;
-        this->_grade = other._grade;
-    }
-    return (*this);
+  if (this != &other) {
+    // this->_name = other._name;
+    this->_grade = other._grade;
+  }
+  return (*this);
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << "Bureaucrat is destructed" << std::endl;
+  DEBUG_PRINT("Bureaucrat is destructed" << std::endl);
 }
 
+// Getters
+const std::string& Bureaucrat::getName() const {
+  return _name;
+}
+
+int Bureaucrat::getGrade() const {
+  return _grade;
+}
+
+// Exceptions
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+  return ("Grade is too high!\n");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+  return ("Grade is too low!\n");
+}
+
+// Helpers
+void Bureaucrat::gradeIncrement() {
+  if (_grade <= 1)
+    throw GradeTooHighException();
+  _grade--;
+}
+
+void Bureaucrat::gradeDecrement() {
+  if (_grade >= 150)
+    throw GradeTooLowException();
+  _grade++;
+}
+
+void Bureaucrat::signForm(Form& form) {
+  try {
+    form.beSigned(*this);
+  } catch (std::exception& e) {
+    std::cout << this->_name << " couldn't sign " << form.getName()
+              << " because " << e.what();
+  }
+}
+
+// Overloading the insertion '<<' operator
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat) {
-    return (out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade());
+  return (out << bureaucrat.getName() << ", bureaucrat grade "
+              << bureaucrat.getGrade());
 }
