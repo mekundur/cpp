@@ -1,19 +1,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
-void PresidentialPardonForm::execute(Bureaucrat const& executor) const {
-  AForm::execute(executor);
-  std::cout << _target << " has been pardoned by Zaphod Beeblebrox"
-            << std::endl;
-}
-
-// *** Getter methods:
-std::string PresidentialPardonForm::getTarget() const {
-  return _target;
-}
-
-// *** Constructors + Destructor + Overload of (<<)
-// *** Orthodox canonical PresidentialPardonForm / rule of three (+one)
+// Orthodox canonical PresidentialPardonForm / rule of three (+one)
 PresidentialPardonForm::PresidentialPardonForm()
     : AForm("default", 25, 5), _target("default") {
   DEBUG_PRINT("PresidentialPardonForm is constructed");
@@ -42,6 +30,19 @@ PresidentialPardonForm::~PresidentialPardonForm() {
   DEBUG_PRINT("PresidentialPardonForm is destructed");
 }
 
+// Getters
+const std::string& PresidentialPardonForm::getTarget() const {
+  return _target;
+}
+
+// Helpers
+void PresidentialPardonForm::execute(Bureaucrat const& executor) const {
+  AForm::execute(executor);
+  std::cout << _target << " has been pardoned by Zaphod Beeblebrox"
+            << std::endl;
+}
+
+// Overloading the insertion '<<' operator
 std::ostream& operator<<(std::ostream& out,
                          const PresidentialPardonForm& form) {
   return (out << form.getName() << ", Signing grade: " << form.getGradeSign()

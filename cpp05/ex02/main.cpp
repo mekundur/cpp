@@ -5,12 +5,8 @@
 #include "ShrubberyCreationForm.hpp"
 
 int main(void) {
-  if (1)
-    DEBUG_PRINT("MMMEELLLOOOOOOO");
-  else
-    std::cout << "HEYYYAAAAAA\n";
 
-  std::srand(time(NULL));
+  std::srand(time(NULL));  // use current time as seed for random generator
   // AForm aform;
   try {
     Bureaucrat b("Mertcan", 5);
