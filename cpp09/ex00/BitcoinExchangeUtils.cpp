@@ -103,8 +103,8 @@ bool BitcoinExchange::date_check(std::string& date_str) const {
     if (!leap && day > 28)
       return (std::cout << "Error: Invalid leap year format!\n", 0);
   }
-  if (date < 20090102)
-    return (std::cout << "Error: Ancient ages!\n", 0);
+  if (date < 20000101)
+    return (std::cout << "Error: No data for Ancient ages!\n", 0);
   if (date >= today)
     return (std::cout << "Error: I can't tell a fortune!\n", 0);
   //   return (std::cout << std::endl, 1);

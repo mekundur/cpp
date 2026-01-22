@@ -5,6 +5,7 @@
 #include <iostream>
 #include <sstream>
 
+// OCF: Constructors, Assignemnt Operator, Destructor
 BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
@@ -18,18 +19,30 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
-// Helpers
+// HELPERS
+// O(log n) lookup complexity
 double BitcoinExchange::search(int date) {
-  std::map<int, double>::iterator it = _data.begin();
-  for (; it != _data.end(); it++) {
-    if (it->first == date)
-      return (it->second);
-  }
-  it = _data.lower_bound(date);
-  if (it != _data.begin())
-    it--;
+  std::map<int, double>::iterator it = _data.lower_bound(date);
+  if (it != _data.end() && it->first == date)
+    return it->second;
+  if (it == _data.begin())
+    throw NoDataException();
+  --it;
   return (it->second);
 }
+
+// O(n) lookup complexity
+// double BitcoinExchange::search(int date) {
+//   std::map<int, double>::iterator it = _data.begin();
+//   for (; it != _data.end(); it++) {
+//     if (it->first == date)
+//       return (it->second);
+//   }
+//   it = _data.lower_bound(date);
+//   if (it != _data.begin())
+//     it--;
+//   return (it->second);
+// }
 
 void BitcoinExchange::get_inputs(const std::string& file_name) {
   std::string date_str;
@@ -82,8 +95,16 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
         std::cout << "=> " << val_str << " ";
 
         if (value_check(val_str)) {
-          double coin_result =
-              stringToDouble(val_str) * search(stringToInt(date_str));
+          double coin_result;
+          try {
+            coin_result =
+                stringToDouble(val_str) * search(stringToInt(date_str));
+          } catch (std::exception& e) {
+            std::cout << e.what() << std::endl;
+            date_str.clear();
+            val_str.clear();
+            continue;
+          }
           std::cout << "= " << std::fixed << std::setprecision(2) << coin_result
                     << std::endl;
         }
@@ -128,11 +149,15 @@ void BitcoinExchange::store_data() {
   // }
 }
 
-// Exceptions
+// EXCEPTIONS
 const char* BitcoinExchange::InvalidValueException::what() const throw() {
   return ("Error: Invalid number!");
 }
 
 const char* BitcoinExchange::OutoftheBoundsException::what() const throw() {
   return ("Error: Number is out of the bounds!");
+}
+
+const char* BitcoinExchange::NoDataException::what() const throw() {
+  return ("Error: No data for this exact or any earlier date");
 }
