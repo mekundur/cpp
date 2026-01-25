@@ -3,6 +3,7 @@
 
 #include <limits.h>
 #include <cfloat>
+#include <exception>
 #include <iomanip>
 #include <iostream>
 #include <limits>
@@ -53,8 +54,10 @@ T strToType(const std::string& str) {
     if (n < std::numeric_limits<T>::min() || n > std::numeric_limits<T>::max())
       throw(OutoftheBoundsException());
   } else {
-    if (n < -std::numeric_limits<T>::max() || n > std::numeric_limits<T>::max())
-      throw(OutoftheBoundsException());
+    if (n > std::numeric_limits<T>::max())
+      throw(std::overflow_error("overflow"));
+    else if (n < -std::numeric_limits<T>::max())
+      throw(std::underflow_error("underflow"));
   }
 
   return static_cast<T>(n);

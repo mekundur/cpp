@@ -73,6 +73,10 @@ static void convert_float(std::string& str, float& n, std::string& msg) {
     else
       out << n << "f";
     msg += out.str();
+  } catch (const std::overflow_error&) {
+    msg += "inff";
+  } catch (const std::underflow_error&) {
+    msg += "-inff";
   } catch (std::exception& e) {
     msg += "impossible";
   }
@@ -87,6 +91,10 @@ static void convert_double(std::string& str, double& n, std::string& msg) {
     else
       out << n;
     msg += out.str();
+  } catch (const std::overflow_error&) {
+    msg += "inf";
+  } catch (const std::underflow_error&) {
+    msg += "-inf";
   } catch (std::exception& e) {
     msg += "impossible";
   }
@@ -103,25 +111,49 @@ static void convert_int(std::string& str, int& n, std::string& msg) {
   }
 }
 
+void handle_pseudo_literals(std::string& str, std::string& msg_c,
+                            std::string& msg_i, std::string& msg_f,
+                            std::string& msg_d) {
+  if (str == "nan" || str == "nanf") {
+    msg_c = "impossible";
+    msg_i = "impossible";
+    msg_f = "nanf";
+    msg_d = "nan";
+  } else if (str == "+inf" || str == "+inff") {
+    msg_c = "impossible";
+    msg_i = "impossible";
+    msg_f = "inff";
+    msg_d = "inf";
+  } else if (str == "-inf" || str == "-inff") {
+    msg_c = "impossible";
+    msg_i = "impossible";
+    msg_f = "-inff";
+    msg_d = "-inf";
+  }
+}
+
 void ScalarConverter::convert(std::string str) {
   char c = 0;
   int i = 0;
   float f = 0;
   double d = 0;
   std::string msg_c, msg_i, msg_f, msg_d;
+  if (str == "nan" || str == "nanf" || str == "+inf" || str == "+inff" ||
+      str == "-inf" || str == "-inff")
+    handle_pseudo_literals(str, msg_c, msg_i, msg_f, msg_d);
+  else {
+    if (char_literal_check(str, c)) {
+      std::ostringstream out;
+      out << static_cast<int>(c);
+      str = out.str();
+    }
+    float_literal_check(str);
 
-  if (char_literal_check(str, c)) {
-    std::ostringstream out;
-    out << static_cast<int>(c);
-    str = out.str();
+    convert_char(str, c, msg_c);
+    convert_int(str, i, msg_i);
+    convert_float(str, f, msg_f);
+    convert_double(str, d, msg_d);
   }
-  float_literal_check(str);
-
-  convert_char(str, c, msg_c);
-  convert_int(str, i, msg_i);
-  convert_float(str, f, msg_f);
-  convert_double(str, d, msg_d);
-
   std::cout << "char: " << msg_c << std::endl;
   std::cout << "int: " << msg_i << std::endl;
   std::cout << "float: " << msg_f << std::endl;
@@ -135,24 +167,3 @@ const char* OutoftheBoundsException::what() const throw() {
 const char* ConversionFailException::what() const throw() {
   return ("Error: Conversion is failed!");
 }
-
-// bool convert_char(std::string& str, char& c, std::string& msg) {
-
-// try {
-//   if (str.size() == 3 && str[0] == '\'' && str[2] == '\'' &&
-//       is_displayable(str[1]))
-//     c = strToType<char>(str, msg);
-//   else if (str.size() == 1 &&
-//            ((33 <= str[0] && str[0] < 48) || (58 <= str[0] && str[0] < 127)))
-//     c = strToType<char>(str, msg);
-//   std::cout << "c: " << c << std::endl;
-//   return true;
-// } catch (std::exception& e) {
-//   msg += "impossible ";
-//   return false;
-// }
-
-// msg += c;
-
-// return false;
-// }

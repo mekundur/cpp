@@ -21,16 +21,23 @@ tests=(
   "-inf|char: impossible|int: impossible|float: -inff|double: -inf"
   "-inff|char: impossible|int: impossible|float: -inff|double: -inf"
 
-  # Limits
-  "-2147483648|char: impossible|int: -2147483648|float: -2147483648.0f|double: -2147483648.0"	
+  # Integer limits
+  "-2147483648|char: impossible|int: -2147483648|float: -2147483648.0f|double: -2147483648.0"
   "2147483647|char: impossible|int: 2147483647|float: 2.14748e+09f|double: 2147483647.0"
-  "340282346638528859811704183484516925440.0f|char: impossible|int: impossible|float: inff|double: 3.40282e+38" # FLT_MAX approx
-  "1.7976931348623157e+308|char: impossible|int: impossible|float: impossible|double: 1.79769e+308" # DBL_MAX
 
-  # Other cases
+  # Floating-point limits
+  "340282346638528859811704183484516925440.0f|char: impossible|int: impossible|float: 3.40282e+38f|double: 3.40282e+38" # FLT_MAX
+  "1.7976931348623157e+308|char: impossible|int: impossible|float: inff|double: 1.79769e+308" # DBL_MAX
+
+  # Large integer within range but imprecise
+  "999999999999999999999999999999|char: impossible|int: impossible|float: 1e+30f|double: 1e+30"
+
+  # Edge case: absurd exponent → impossible
+  "-1.7976931348623158e+355933333|char: impossible|int: impossible|float: impossible|double: impossible"
+
+  # Invalid inputs
   "abcd|char: impossible|int: impossible|float: impossible|double: impossible"
   "123abc|char: impossible|int: impossible|float: impossible|double: impossible"
-  "999999999999999999999999999999|char: impossible|int: impossible|float: 1e+30f|double: 1e+30"
 )
 
 for t in "${tests[@]}"; do

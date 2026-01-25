@@ -9,19 +9,24 @@ template <typename T>
 class Array {
 
  private:
-  unsigned int _len;
   T* _data;
+  unsigned int _len;
 
  public:
-  unsigned int size() const { return (_len); }
+  Array<T>()
+      : _len(0),
+        _data(NULL){
 
-  Array<T>() : _len(0), _data(NULL){};
+        };
+
   Array(unsigned int n) : _len(n), _data(new T[_len]){};
+
   Array(const Array& other) : _len(other._len) {
     _data = new T[_len];
     for (unsigned int i = 0; i < _len; i++)
       _data[i] = other._data[i];
   };
+
   Array& operator=(const Array& other) {
     if (this != &other) {
       this->_len = other._len;
@@ -33,8 +38,11 @@ class Array {
     return (*this);
   };
 
+  // getters
+  unsigned int size() const { return (_len); }
+
   // overloading of [] operator to
-  // access array elements through type T
+  // access array elements T
   T& operator[](int i) { return (_data[check(i)]); };
 
   const T& operator[](int i) const { return (_data[check(i)]); };
@@ -57,8 +65,9 @@ class Array {
   };
 };
 
+// My class array implementation (not the template one)
+
 /*
-// My normal class int array (not the template one)
 class Array {
     
     private:
