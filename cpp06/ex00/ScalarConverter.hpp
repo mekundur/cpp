@@ -39,6 +39,7 @@ class OutoftheBoundsException : public std::exception {
   virtual const char* what() const throw();
 };
 
+
 template <typename T>
 T strToType(const std::string& str) {
 
