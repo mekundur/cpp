@@ -67,7 +67,7 @@ int main() {
       std::cout << *it << std::endl;
       ++it;
     }
-    std::stack<int, std::list<int>> s(myList);
+    std::stack<int, std::list<int>>   s(myList);
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
   }

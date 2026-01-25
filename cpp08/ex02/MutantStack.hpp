@@ -6,8 +6,7 @@
 
 /**
  * @brief Following is the definition of std::stack template from stl_stack.h:
- * 
- *  template<typename _Tp, typename _Sequence = deque<_Tp> >
+ *  *  template<typename _Tp, typename _Sequence = deque<_Tp> >
     class stack
     {
       template<typename _Tp1, typename _Seq1>

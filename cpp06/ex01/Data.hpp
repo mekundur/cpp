@@ -2,6 +2,6 @@
 #include <string>
 
 typedef struct Data {
-    std::string name;
-    int         grade;
+  std::string name;
+  int grade;
 } Data;

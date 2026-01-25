@@ -27,11 +27,11 @@ int main(void) {
   }
 
   try {
-    std::deque<int> myDeqt;
+    std::deque<int> myDeq;
     for (int i = 1; i <= 5; i++)
-      myDeqt.push_back(i);
-    easyfind(myDeqt, num1);
-    easyfind(myDeqt, num2);
+      myDeq.push_back(i);
+    easyfind(myDeq, num1);
+    easyfind(myDeq, num2);
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
   }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <exception>
 #include <iostream>
 #include <sstream>
@@ -27,12 +28,22 @@ template <typename T>
 
 typename T::const_iterator easyfind(const T& container, int n) {
 
-  typename T::const_iterator it = container.begin();
-  for (; it != container.end(); it++) {
-    if (*it == n)
-      break;
-  }
+  typename T::const_iterator it = find(container.begin(), container.end(), n);
   if (it == container.end())
     throw NotFoundException(n);
   return (it);
 }
+
+// template <typename T>
+
+// typename T::const_iterator easyfind(const T& container, int n) {
+
+//   typename T::const_iterator it = container.begin();
+//   for (; it != container.end(); it++) {
+//     if (*it == n)
+//       break;
+//   }
+//   if (it == container.end())
+//     throw NotFoundException(n);
+//   return (it);
+// }
