@@ -21,6 +21,7 @@ class Span {
 
   unsigned int get_N() const;
   const std::vector<int>& get_numbers() const;
+  void printVect() const;
 
   int shortestSpan() const;
   int longestSpan() const;

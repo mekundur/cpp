@@ -31,6 +31,8 @@ typename T::const_iterator easyfind(const T& container, int n) {
   typename T::const_iterator it = find(container.begin(), container.end(), n);
   if (it == container.end())
     throw NotFoundException(n);
+  else 
+    std::cout << "Found: " << *it << std::endl; 
   return (it);
 }
 

@@ -6,6 +6,7 @@
 int main() {
 
   // TEST1
+  std::cout << "TEST1" << std::endl;
   try {
     MutantStack<int> mstack;
 
@@ -40,6 +41,7 @@ int main() {
   std::cout << std::endl;
 
   // TEST2
+  std::cout << "TEST2" << std::endl;
   try {
     std::list<int> myList;
 
@@ -67,7 +69,7 @@ int main() {
       std::cout << *it << std::endl;
       ++it;
     }
-    std::stack<int, std::list<int>>   s(myList);
+    std::stack<int, std::list<int> > s(myList);
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
   }

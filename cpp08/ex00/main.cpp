@@ -6,6 +6,7 @@
 int main(void) {
 
   int num1 = 5, num2 = 100;
+  
   try {
     std::vector<int> myVect;
     for (int i = 1; i <= 5; i++)

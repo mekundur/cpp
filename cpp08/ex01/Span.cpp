@@ -43,20 +43,27 @@ const std::vector<int>& Span::get_numbers() const {
   return (_numbers);
 }
 
+void Span::printVect() const {
+  std::cout << "_N: " << _N << std::endl;
+  std::cout << "Size: " << _numbers.size() << std::endl;
+  for (std::vector<int>::const_iterator it = _numbers.begin(); it != _numbers.end();
+       ++it)
+    std::cout << *it << " ";
+  std::cout << std::endl;
+}
+
+
 int Span::shortestSpan() const {
   if (_numbers.size() < 2)
     throw(NotEnoughNumbersException());
 
-  std::vector<int>::const_iterator it1 = _numbers.begin();
-  std::vector<int>::const_iterator it2 = _numbers.begin() + 1;
-  int span = abs(*it1 - *it2);
-  for (; it1 != _numbers.end(); it1++) {
-    it2 = it1 + 1;
-    for (; it2 != _numbers.end(); it2++) {
-      if (abs(*it1 - *it2) < span)
-        span = abs(*it1 - *it2);
+  std::vector<int> tmp(_numbers);
+  std::sort(tmp.begin(), tmp.end());
+  int span = tmp.back() - tmp.front();
+    for (std::vector<int>::iterator it = tmp.begin(); (it + 1) != tmp.end(); ++it) {
+      if (abs(*(it + 1) - *it) < span)
+        span = abs(*(it + 1) - *it);    
     }
-  }
   return (span);
 }
 
@@ -64,14 +71,8 @@ int Span::longestSpan() const {
   if (_numbers.size() < 2)
     throw(NotEnoughNumbersException());
 
-  int span = 0;
-  std::vector<int>::const_iterator it1 = _numbers.begin();
-  for (; it1 != _numbers.end(); ++it1) {
-    std::vector<int>::const_iterator it2 = _numbers.begin();
-    for (; it2 != _numbers.end(); ++it2) {
-      if (abs(*it1 - *it2) > span)
-        span = abs(*it1 - *it2);
-    }
-  }
-  return (span);
+  std::vector<int> tmp(_numbers);
+  std::sort(tmp.begin(), tmp.end());
+
+  return (tmp.back() - tmp.front());
 }
