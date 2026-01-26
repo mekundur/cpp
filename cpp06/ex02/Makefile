@@ -1,6 +1,6 @@
-NAME = scalarConverter
-HEADER = ScalarConverter.hpp
-SRC = main.cpp ScalarConverter.cpp
+NAME = identifier
+HEADER = Base.hpp A.hpp B.hpp C.hpp
+SRC = Base.cpp A.cpp B.cpp C.cpp main.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 

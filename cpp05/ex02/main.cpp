@@ -6,7 +6,7 @@
 
 int main(void) {
 
-  std::srand(time(NULL));  // use current time as seed for random generator
+  std::srand(time(NULL));  //use current time as seed for random generator
   // AForm aform;
   try {
     Bureaucrat b("Mertcan", 5);

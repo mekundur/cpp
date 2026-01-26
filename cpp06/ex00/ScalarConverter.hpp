@@ -51,6 +51,7 @@ T strToType(const std::string& str) {
   if (ss.fail() || !ss.eof())
     throw(ConversionFailException());
 
+    
   if (std::numeric_limits<T>::is_integer) {
     if (n < std::numeric_limits<T>::min() || n > std::numeric_limits<T>::max())
       throw(OutoftheBoundsException());
