@@ -13,13 +13,14 @@ class Array {
   unsigned int _len;
 
  public:
-  Array<T>()
-      : _len(0),
-        _data(NULL){
+  Array<T>() : _len(0), _data(NULL){};
 
-        };
-
-  Array(unsigned int n) : _len(n), _data(new T[_len]){};
+//   Array(unsigned int n) : _len(n), _data(new T[_len]){};
+  
+  Array(unsigned int n) {
+    _len = n;
+    _data = new T[_len];
+  };
 
   Array(const Array& other) : _len(other._len) {
     _data = new T[_len];
@@ -38,19 +39,17 @@ class Array {
     return (*this);
   };
 
+  ~Array() { delete[] _data; };
+
   // getters
   unsigned int size() const { return (_len); }
 
-  // overloading of [] operator to
-  // access array elements T
+  // overloading of [] operator to access array elements
   T& operator[](int i) { return (_data[check(i)]); };
 
   const T& operator[](int i) const { return (_data[check(i)]); };
 
-  ~Array() { delete[] _data; };
-
   // index bounds checking method and exception:
-
   int check(int i) const {
     if (i < 0 || i >= (int)_len)
       throw BoundsViolationException();

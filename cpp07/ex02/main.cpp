@@ -25,6 +25,9 @@ int main(void) {
     for (unsigned int i = 0; i < myArr1.size(); i++)
       std::cout << myArr3[i] << " ";
     std::cout << std::endl;
+    
+    myArr1[10] = 55;
+
   } catch (std::exception& e) {
     std::cout << "Error: " << e.what() << std::endl;
   }

@@ -7,7 +7,7 @@ int main(void) {
     int len = 5;
     const int arr[5] = {0, 5, 8, 3};
 
-    // iter(arr, len, mutate<const int>);
+    // iter(ammarr, len, mutate<const int>);
     iter(arr, len, print<const int>);
     for (int i = 0; i < len; i++)
       std::cout << arr[i] << " ";
@@ -24,7 +24,7 @@ int main(void) {
   }
   {
     size_t len = 10;
-    char arr[10] = "Mertcan";
+    char arr[10] = "42Berlin";
 
     iter(arr, len, mutate<char>);
     for (size_t i = 0; i < len; i++)
