@@ -14,15 +14,15 @@ Base * generate(void) {
     std::srand(time(NULL));  //use current time as seed for random generator
     if (rand() % 3 == 2) {
         ptr = new A;
-        std::cout << "Base *ptr is pointing to A" << std::endl;
+        std::cout << "Base *ptr is pointing to type A" << std::endl;
     }
     else if (rand() % 3 == 1) {
         ptr = new B;   
-        std::cout << "Base *ptr is pointing to B" << std::endl;
+        std::cout << "Base *ptr is pointing to type B" << std::endl;
     }
     else {
         ptr = new C;
-        std::cout << "Base *ptr is pointing to C" << std::endl;
+        std::cout << "Base *ptr is pointing to type C" << std::endl;
     }
     return (ptr);
 }
@@ -43,14 +43,39 @@ void identify(Base& p) {
     Base a, b, c;
 
     std::cout << &p << std::endl;
+    a = static_cast<A&>(p);
+    b = static_cast<B&>(p);
+    c = static_cast<C&>(p);
     
-    a = dynamic_cast<A&>(p);
-    std::cout << &a << std::endl;
+    try {
+        a = dynamic_cast<A&>(p);
+        std::cout << "Type of A" << std::endl;
+    }
+    catch(...) {
+        std::cerr << "Not A" << std::endl;
+    }
     
-    b = dynamic_cast<B&>(p);
-    std::cout << &b << std::endl;
+    try {
+        b = dynamic_cast<B&>(p);
+        std::cout << "Type of B" << std::endl;
+    }
+    catch(...) {
+        std::cerr << "Not B" << std::endl;
+    }
+
+    try {
+        c = dynamic_cast<C&>(p);
+        std::cout << "Type of C" << std::endl;
+    }
+    catch(...) {
+        std::cerr << "Not C" << std::endl;
+    }
     
-    c = dynamic_cast<C&>(p);
-    std::cout << &c << std::endl;
+    
+    // b = dynamic_cast<B&>(p);
+    // std::cout << &b << std::endl;
+    
+    // c = dynamic_cast<C&>(p);
+    // std::cout << &c << std::endl;
     
 }
