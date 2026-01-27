@@ -11,14 +11,26 @@ int main(void) {
   myData.name = "Berlin";
   myData.grade = 42;
 
-  std::cout << uInt << std::endl;
-  std::cout << &myData << std::endl;
-  uInt = Serializer::serialize(&myData);
-  std::cout << uInt << std::endl;
+  std::cout << "Before serializing..:" << std::endl;
+  std::cout << "uInt: " << uInt << std::endl;
+  std::cout << &myData << " Address of data object" << std::endl;
 
-  std::cout << myData_p << std::endl;
+  uInt = Serializer::serialize(&myData);
+
+  std::cout << std::endl;
+  std::cout << "After serializing..:" << std::endl;
+  std::cout << "uInt: " << uInt << std::endl;
+
+
+  std::cout << "Before deserializing..:" << std::endl;
+  std::cout << myData_p << " Address that pointer to the data object is holding" << std::endl;
+
   myData_p = Serializer::deserialize(uInt);
-  std::cout << myData_p << std::endl;
+  
+  std::cout << std::endl;
+  std::cout << "After deserializing..:" << std::endl;
+  std::cout << &myData << " Address of data object" << std::endl;
+  std::cout << myData_p << " Address that pointer to the data object is holding" << std::endl;
   std::cout << myData_p->grade;
   std::cout << myData_p->name << std::endl;
 }
