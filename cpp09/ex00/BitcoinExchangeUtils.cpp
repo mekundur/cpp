@@ -14,15 +14,13 @@ void BitcoinExchange::ft_trim(std::string& str) {
     str.erase(0, 1);
 }
 
-size_t BitcoinExchange::pipeCount(std::string& str) const {
-  int pipeCount = 0;
-  std::string::size_type pos = 0;
-
-  while ((pos = str.find('|', pos)) != std::string::npos) {
-    ++pipeCount;
-    ++pos;  // move past the found position
-  }
-  return (pipeCount);
+void BitcoinExchange::print_date(std::string& date_str) {
+  int date = stringToInt(date_str);
+  int year = date / 10000;
+  int day = date % 100;
+  int month = (date - (year * 10000) - day) / 100;
+  std::cout << std::setfill('0') << std::setw(4) << year << "-" << std::setw(2)
+            << month << "-" << std::setw(2) << day << " ";
 }
 
 std::string BitcoinExchange::get_current_date_time() const {
@@ -67,20 +65,10 @@ bool BitcoinExchange::value_check(std::string& value_str) const {
     return (std::cout << e.what() << std::endl, 0);
   }
   if (val <= 0)
-    return (std::cout << "Error: Invalid value entry!" << std::endl, 0);
+    return (std::cout << "Error: Value is less than zero!" << std::endl, 0);
   if (1000 < val)
     return (std::cout << "Error: Value is too large!" << std::endl, 0);
-
   return (1);
-}
-
-void BitcoinExchange::print_date(std::string& date_str) {
-  int date = stringToInt(date_str);
-  int year = date / 10000;
-  int day = date % 100;
-  int month = (date - (year * 10000) - day) / 100;
-  std::cout << std::setfill('0') << std::setw(4) << year << "-" << std::setw(2)
-            << month << "-" << std::setw(2) << day << " ";
 }
 
 bool BitcoinExchange::date_check(std::string& date_str) const {
@@ -91,7 +79,6 @@ bool BitcoinExchange::date_check(std::string& date_str) const {
   int day = date % 100;
   int month = (date - (year * 10000) - day) / 100;
   int today = stringToInt(get_current_date_time());
-  //   print_date(date_str);
   if (month < 1 || 12 < month)
     return (std::cout << "Error: Wrong month entry!\n", 0);
   if (day < 1 || 31 < day)
@@ -107,6 +94,14 @@ bool BitcoinExchange::date_check(std::string& date_str) const {
     return (std::cout << "Error: No data for Ancient ages!\n", 0);
   if (date >= today)
     return (std::cout << "Error: I can't tell a fortune!\n", 0);
-  //   return (std::cout << std::endl, 1);
   return (1);
+}
+
+size_t BitcoinExchange::pipeCount(std::string& str) const {
+  int count = 0;
+  for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
+    if (*it == '|')
+      count++;
+  }
+  return (count);
 }
