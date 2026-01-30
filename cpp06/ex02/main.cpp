@@ -8,17 +8,16 @@
 
 int main(void) {
 
-  Base* p;
+  Base* ptr;
 
-  for (int i = 0; i < 5; i++) {
+  ptr = generate();
+  std::cout << std::endl;
+  identify(ptr);
+  std::cout << std::endl;
+  std::cout << "ptr is holding the address: " << ptr << std::endl;
+  std::cout << std::endl;
+  identify(*ptr);
 
-    p = generate();
-    identify(p);
-    std::cout << &p << std::endl;
-    std::cout << p << std::endl;
-    identify(*p);
-    delete p;
+  delete ptr;
 
-    sleep(1);
-  }
 }

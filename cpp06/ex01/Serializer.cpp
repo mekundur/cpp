@@ -15,3 +15,9 @@ uintptr_t Serializer::serialize(Data* ptr) {
 Data* Serializer::deserialize(uintptr_t raw) {
   return (reinterpret_cast<Data*>(raw));
 }
+
+// dynamic_cast can be used only between pointer types
+// it is checked during runtime
+
+// static_cast can be used only coversion if makes sense
+// and it checked during compilation

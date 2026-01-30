@@ -14,59 +14,61 @@ Base * generate(void) {
     std::srand(time(NULL));  //use current time as seed for random generator
     if (rand() % 3 == 2) {
         ptr = new A;
-        std::cout << "Base *ptr is pointing to type A" << std::endl;
+        std::cout << "Base *ptr is generated and pointing to type A that stored in address: " << ptr << std::endl;
     }
     else if (rand() % 3 == 1) {
         ptr = new B;   
-        std::cout << "Base *ptr is pointing to type B" << std::endl;
+        std::cout << "Base *ptr is generated and pointing to type B that stored in address: " << ptr << std::endl;
     }
     else {
         ptr = new C;
-        std::cout << "Base *ptr is pointing to type C" << std::endl;
+        std::cout << "Base *ptr is generated and pointing to type C that stored in address: " << ptr << std::endl;
     }
     return (ptr);
 }
 
 void identify(Base* p) {
     
-    if (dynamic_cast<A*>(p))
-        std::cout << "dynamic_cast to type A*" << std::endl;
-    else if (dynamic_cast<B*>(p))
-        std::cout << "dynamic_cast to type B*" << std::endl;
-    else if (dynamic_cast<C*>(p))
-        std::cout << "dynamic_cast to type C*" << std::endl;
-    else
+    if (dynamic_cast<A*>(p)) {
+        std::cout << "dynamic_cast from type Base* to type A* and now pointing to: " << p << std::endl;
+
+    } else if (dynamic_cast<B*>(p)) {
+        std::cout << "dynamic_cast from type Base* to type B* and now pointing to: " << p << std::endl;
+
+    } else if (dynamic_cast<C*>(p)) {
+        std::cout << "dynamic_cast from type Base* to type C* and now pointing to: " << p << std::endl;
+
+    } else
         std::cout << "Unknown type" << std::endl;
 }
 
 void identify(Base& p) {
+    
     Base a, b, c;
-
     try {
         a = dynamic_cast<A&>(p);
-        std::cout << "Type of A" << std::endl;
+        std::cout << &a << " Type of A copied from " << &p << std::endl;
     }
-    catch(...) {
-        std::cerr << "Not A" << std::endl;
+    catch(std::exception &e) {
+        std::cerr <<  e.what()  << " (Not A)" << std::endl;
     }
-    
+    /////
     try {
         b = dynamic_cast<B&>(p);
-        std::cout << "Type of B" << std::endl;
+        std::cout << &b << " Type of B copied from " << &p << std::endl;
     }
-    catch(...) {
-        std::cerr << "Not B" << std::endl;
+    catch(std::exception &e) {
+        std::cerr <<  e.what()  << " (Not B)" << std::endl;
     }
-
+    /////
     try {
         c = dynamic_cast<C&>(p);
-        std::cout << "Type of C" << std::endl;
+        std::cout << &c << " Type of C copied from " << &p << std::endl;
     }
-    catch(...) {
-        std::cerr << "Not C" << std::endl;
+    catch(std::exception &e) {
+        std::cerr <<  e.what()  << " (Not C)" << std::endl;
     }
     
-
     // static_cast converts without any safety
     // and checking wheter the type is compatiable
 

@@ -1,6 +1,6 @@
 NAME = identifier
 HEADER = Base.hpp A.hpp B.hpp C.hpp
-SRC = Base.cpp A.cpp B.cpp C.cpp main.cpp
+SRC = Base.cpp main.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
