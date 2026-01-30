@@ -42,11 +42,6 @@ void identify(Base* p) {
 void identify(Base& p) {
     Base a, b, c;
 
-    std::cout << &p << std::endl;
-    a = static_cast<A&>(p);
-    b = static_cast<B&>(p);
-    c = static_cast<C&>(p);
-    
     try {
         a = dynamic_cast<A&>(p);
         std::cout << "Type of A" << std::endl;
@@ -71,11 +66,15 @@ void identify(Base& p) {
         std::cerr << "Not C" << std::endl;
     }
     
-    
-    // b = dynamic_cast<B&>(p);
+
+    // static_cast converts without any safety
+    // and checking wheter the type is compatiable
+
+    // std::cout << &p << std::endl;
+    // a = static_cast<A&>(p);
+    // std::cout << &a << std::endl;
+    // b = static_cast<B&>(p);
     // std::cout << &b << std::endl;
-    
-    // c = dynamic_cast<C&>(p);
-    // std::cout << &c << std::endl;
-    
+    // c = static_cast<C&>(p);
+    // std::cout << &c << std::endl;   
 }
