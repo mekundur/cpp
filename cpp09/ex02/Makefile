@@ -1,6 +1,6 @@
 NAME = PmergeMe
 HEADER = PmergeMe.hpp
-SRC = PmergeMe.cpp PmergeMeUtils.cpp main.cpp
+SRC = PmergeMe.cpp PmergeMeUtils.cpp PmergeMeVect.cpp PmergeMeList.cpp main.cpp
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
