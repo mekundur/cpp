@@ -48,6 +48,10 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
   std::string date_str;
   std::string val_str;
   std::ifstream file(file_name.c_str());
+  if (file.fail()) 
+    throw(ReadFailException());
+  if (file.peek() == std::ifstream::traits_type::eof())
+    throw(EmptyFileException());
   if (file.is_open()) {
     std::string line;
     getline(file, line, '\n');
@@ -119,6 +123,10 @@ void BitcoinExchange::store_data() {
   std::string date;
   std::string val;
   std::ifstream file("data.csv");
+  if (file.fail()) 
+    throw(ReadFailException());
+  if (file.peek() == std::ifstream::traits_type::eof())
+    throw(EmptyFileException());
   if (file.is_open()) {
     std::string line;
     getline(file, line, '\n');
@@ -160,4 +168,12 @@ const char* BitcoinExchange::OutoftheBoundsException::what() const throw() {
 
 const char* BitcoinExchange::NoDataException::what() const throw() {
   return ("Error: No data for this exact or any earlier date");
+}
+
+const char* BitcoinExchange::EmptyFileException::what() const throw() {
+  return ("Error: Empty file");
+}
+
+const char* BitcoinExchange::ReadFailException::what() const throw() {
+  return ("Error: Unable to read from file");
 }

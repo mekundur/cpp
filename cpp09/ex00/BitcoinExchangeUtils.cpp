@@ -80,9 +80,9 @@ bool BitcoinExchange::date_check(std::string& date_str) const {
   int month = (date - (year * 10000) - day) / 100;
   int today = stringToInt(get_current_date_time());
   if (month < 1 || 12 < month)
-    return (std::cout << "Error: Wrong month entry!\n", 0);
+    return (std::cout << "Error: Invalid date format!\n", 0);
   if (day < 1 || 31 < day)
-    return (std::cout << "Error: Invalid day entry!\n", 0);
+    return (std::cout << "Error: Invalid date format!\n", 0);
   if ((month == 4 || month == 6 || month == 9 || month == 11) && day == 31)
     return (std::cout << "Error: Invalid month-day format\n", 0);
   if (month == 2) {

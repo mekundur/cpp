@@ -39,4 +39,12 @@ class BitcoinExchange {
    public:
     virtual const char* what() const throw();
   };
+  class EmptyFileException : public std::exception {
+   public:
+    virtual const char* what() const throw();
+  };
+  class ReadFailException : public std::exception {
+   public:
+    virtual const char* what() const throw();
+  };
 };
