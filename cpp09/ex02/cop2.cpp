@@ -18,11 +18,11 @@ class PmergeMe {
   void fordJohnsonVector(std::vector<int>& data, int i);
 };
 
-void printVect(const std::vector<int>& vect) {
+void printVec(const std::vector<int>& vect) {
   for (std::vector<int>::const_iterator it = vect.begin(); it != vect.end();
        ++it)
-    std::cout << std::setw(2) << *it << " ";
-  std::cout << std::endl;
+  //std::cout << std::setw(2) << *it << " ";
+  //std::cout << std::endl;
 }
 
 ////////////////////
@@ -33,15 +33,15 @@ struct Pair {
 };
 
 void printPairs(const std::vector<Pair>& p) {
-  std::cout << "pLarge: ";
+  //std::cout << "pLarge: ";
   for (std::vector<Pair>::const_iterator it = p.begin(); it != p.end(); ++it)
-    std::cout << std::setw(2) << it->large << " ";
-  std::cout << std::endl;
+    //std::cout << std::setw(2) << it->large << " ";
+    //std::cout << std::endl;
 
-  std::cout << "pSmall: ";
-  for (std::vector<Pair>::const_iterator it = p.begin(); it != p.end(); ++it)
-    std::cout << std::setw(2) << it->small << " ";
-  std::cout << std::endl;
+    //std::cout << "pSmall: ";
+    for (std::vector<Pair>::const_iterator it = p.begin(); it != p.end(); ++it)
+  //std::cout << std::setw(2) << it->small << " ";
+  //std::cout << std::endl;
 }
 
 // Jacobsthal sequence generator up to limit n
@@ -91,30 +91,30 @@ void PmergeMe::fordJohnsonVector(std::vector<int>& data, int i) {
     }
   }
 
-  std::cout << "RECURSION-----------------------------------/" << std::setw(2)
-            << i << std::endl;
-  std::cout << "data__: ";
-  printVect(data);
+  //std::cout << "RECURSION-----------------------------------/" << std::setw(2)
+  << i << std::endl;
+  //std::cout << "data__: ";
+  printVec(data);
   printPairs(pairs);
   if (leftover)
-    std::cout << "leftov: " << leftover << std::endl;
+    //std::cout << "leftov: " << leftover << std::endl;
 
-  for (std::vector<Pair>::iterator it = pairs.begin(); it != pairs.end();
-       ++it) {
-    mainChain.push_back(it->large);
-  }
+    for (std::vector<Pair>::iterator it = pairs.begin(); it != pairs.end();
+         ++it) {
+      mainChain.push_back(it->large);
+    }
   if (leftover)
     mainChain.push_back(leftover);
   // Step 2: recursively sort larger
 
   fordJohnsonVector(mainChain, i + 1);
 
-  std::cout << "RECURSION-----------------------------------/" << std::setw(2)
-            << -i << std::endl;
+  //std::cout << "RECURSION-----------------------------------/" << std::setw(2)
+  << -i << std::endl;
 
   printPairs(pairs);
-  std::cout << "MCHAIN: ";
-  printVect(mainChain);
+  //std::cout << "MCHAIN: ";
+  printVec(mainChain);
 
   // Step 3: insert smaller using Jacobsthal order
   std::vector<size_t> jac = jacobsthalSequence(pairs.size());
@@ -134,8 +134,8 @@ void PmergeMe::fordJohnsonVector(std::vector<int>& data, int i) {
   //   insertVector(larger, leftover);
 
   data = mainChain;
-  std::cout << "data__: ";
-  printVect(data);
+  //std::cout << "data__: ";
+  printVec(data);
 }
 
 void PmergeMe::sortVector(std::vector<int>& data) {
@@ -165,25 +165,25 @@ int main(int argc, char** argv) {
     lst.push_back(val);
   }
 
-  std::cout << "Before: ";
+  //std::cout << "Before: ";
   for (size_t i = 0; i < vec.size(); ++i)
-    std::cout << vec[i] << " ";
-  std::cout << std::endl;
-  std::cout << "------------------------------------------" << std::endl;
+    //std::cout << vec[i] << " ";
+    //std::cout << std::endl;
+    //std::cout << "------------------------------------------" << std::endl;
 
-  clock_t start = clock();
+    clock_t start = clock();
   PmergeMe pm;
 
   pm.sortVector(vec);
   clock_t end = clock();
   double vecTime = double(end - start) / CLOCKS_PER_SEC * 1e6;
 
-  std::cout << "------------------------------------------" << std::endl;
-  std::cout << "After: ";
+  //std::cout << "------------------------------------------" << std::endl;
+  //std::cout << "After: ";
   for (size_t i = 0; i < vec.size(); ++i)
-    std::cout << vec[i] << " ";
-  std::cout << std::endl;
+    //std::cout << vec[i] << " ";
+    //std::cout << std::endl;
 
-  std::cout << "Time to process a range of " << vec.size()
-            << " elements with std::vector : " << vecTime << " us" << std::endl;
+    //std::cout << "Time to process a range of " << vec.size()
+    << " elements with std::vector : " << vecTime << " us" << std::endl;
 }

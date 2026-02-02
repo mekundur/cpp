@@ -1,65 +1,47 @@
+#include <sys/time.h>
+#include <deque>
 #include <iomanip>
 #include <iostream>
-#include <list>
 #include <vector>
 #include "PmergeMe.hpp"
 
-// void PmergeMe::printVect(const std::vector<int>& vect) {
-//   for (std::vector<int>::const_iterator it = vect.begin(); it != vect.end();
-//        ++it)
-//     std::cout << std::setw(2) << *it << " ";
-//   std::cout << std::endl;
-// }
-
-void PmergeMe::printList(const std::list<int>& list) {
-  for (std::list<int>::const_iterator it = list.begin(); it != list.end(); ++it)
-    std::cout << *it << " ";
+void PmergeMe::printVec(const std::vector<int>& vec) {
+  for (std::vector<int>::const_iterator it = vec.begin(); it != vec.end(); ++it)
+    std::cout << std::setw(2) << *it << " ";
   std::cout << std::endl;
 }
 
-///// Move both printVect functions into utils later on
-void PmergeMe::printVect(const std::vector<int>& vect) {
-  for (std::vector<int>::const_iterator it = vect.begin(); it != vect.end();
+void PmergeMe::printVec(const std::vector<size_t>& vec) {
+  for (std::vector<size_t>::const_iterator it = vec.begin(); it != vec.end();
        ++it)
     std::cout << std::setw(2) << *it << " ";
   std::cout << std::endl;
 }
 
-void PmergeMe::printVect(const std::vector<size_t>& vect) {
-  for (std::vector<size_t>::const_iterator it = vect.begin(); it != vect.end();
+void PmergeMe::printDeq(const std::deque<int>& deq) {
+  for (std::deque<int>::const_iterator it = deq.begin(); it != deq.end(); ++it)
+    std::cout << std::setw(2) << *it << " ";
+  std::cout << std::endl;
+}
+
+void PmergeMe::printDeq(const std::deque<size_t>& deq) {
+  for (std::deque<size_t>::const_iterator it = deq.begin(); it != deq.end();
        ++it)
     std::cout << std::setw(2) << *it << " ";
   std::cout << std::endl;
 }
 
-/////
-////////////////////// Insertion Sort
+// Insertion Sort
 void linearInsert(std::vector<int>& sorted, int value) {
   std::vector<int>::iterator it = sorted.begin();
   while (it != sorted.end()) {
-    steps++;  // count every comparison attempt
+    vsteps++;
     if (*it < value)
       ++it;
     else
       break;
   }
   sorted.insert(it, value);
-}
-////////////////////// Binary Insertion Sort
-// Insert value into sorted mainChain using full binary search
-void binaryInsertion(std::vector<int>& main, int val) {
-  size_t low = 0;
-  size_t up = main.size();
-
-  while (low < up) {
-    size_t mid = (low + up) / 2;
-    steps++;
-    if (main[mid] < val)
-      low = mid + 1;
-    else
-      up = mid;
-  }
-  main.insert(main.begin() + low, val);
 }
 
 std::vector<size_t> PmergeMe::generateJacobs(size_t n) {
@@ -73,4 +55,10 @@ std::vector<size_t> PmergeMe::generateJacobs(size_t n) {
   jacobs.erase(jacobs.begin());
   jacobs.erase(jacobs.begin());
   return (jacobs);
+}
+
+double getCurrentTime() {
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  return tv.tv_sec * 1000000.0 + tv.tv_usec;
 }
