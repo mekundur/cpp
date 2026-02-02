@@ -48,18 +48,18 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
   std::string date_str;
   std::string val_str;
   std::ifstream file(file_name.c_str());
-  if (file.fail()) 
+  if (file.fail())
     throw(ReadFailException());
   if (file.peek() == std::ifstream::traits_type::eof())
     throw(EmptyFileException());
   if (file.is_open()) {
     std::string line;
     getline(file, line, '\n');
-    // int test = 2;
     while (getline(file, line, '\n')) {
-
-      if (pipeCount(line) > 1) {
-        std::cout << "Error: Multiple | in the entry! " << std::endl;
+      if (pipeCount(line) > 1 || pipeCount(line) == 0) {
+        std::cout << "Error: Multiple or no '|'s or empty entry! " << std::endl;
+        date_str.clear();
+        val_str.clear();
         continue;
       }
       std::string out_date_str;
@@ -77,27 +77,41 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
         if (getline(ss_line, str_line))
           val_str = str_line;
       }
-      // std::cout << test << " ";
-      // test++;
+
       ft_trim(date_str);
       ft_trim(val_str);
       if (date_str.empty() && val_str.size()) {
         std::cout << "Error: No date entry! " << std::endl;
+        date_str.clear();
+        val_str.clear();
         continue;
       } else if (date_str.empty()) {
         std::cout << "Error: Completely empty entry! " << std::endl;
+        date_str.clear();
+        val_str.clear();
         continue;
       }
       if (val_str.empty()) {
-        std::cout << out_date_str << " ";
         std::cout << "Error: No value entry! " << std::endl;
+        date_str.clear();
+        val_str.clear();
         continue;
+      } else {
+        bool flag = 0;
+        for (std::string::iterator it = val_str.begin(); it != val_str.end();
+             ++it) {
+          if (!(isdigit(*it) || *it == '.'))
+            flag = 1;
+        }
+        if (flag || dotCount(val_str) > 1) {
+          std::cout << "Error: Wrong value format! " << std::endl;
+          date_str.clear();
+          val_str.clear();
+          continue;
+        }
       }
 
-      std::cout << out_date_str << " ";
       if (date_check(date_str)) {
-        std::cout << "=> " << val_str << " ";
-
         if (value_check(val_str)) {
           double coin_result;
           try {
@@ -109,8 +123,8 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
             val_str.clear();
             continue;
           }
-          std::cout << "= " << std::fixed << std::setprecision(2) << coin_result
-                    << std::endl;
+          std::cout << out_date_str << " => " << val_str << " = " << std::fixed
+                    << std::setprecision(2) << coin_result << std::endl;
         }
       }
       date_str.clear();
@@ -123,7 +137,7 @@ void BitcoinExchange::store_data() {
   std::string date;
   std::string val;
   std::ifstream file("data.csv");
-  if (file.fail()) 
+  if (file.fail())
     throw(ReadFailException());
   if (file.peek() == std::ifstream::traits_type::eof())
     throw(EmptyFileException());

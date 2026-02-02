@@ -73,16 +73,16 @@ bool BitcoinExchange::value_check(std::string& value_str) const {
 
 bool BitcoinExchange::date_check(std::string& date_str) const {
   if (date_str.size() != 8)
-    return (std::cout << "Error: Invalid date format!\n", 0);
+    return (std::cout << "Error: Invalid date format1!\n", 0);
   int date = stringToInt(date_str);
   int year = date / 10000;
   int day = date % 100;
   int month = (date - (year * 10000) - day) / 100;
   int today = stringToInt(get_current_date_time());
   if (month < 1 || 12 < month)
-    return (std::cout << "Error: Invalid date format!\n", 0);
+    return (std::cout << "Error: Invalid date format2!\n", 0);
   if (day < 1 || 31 < day)
-    return (std::cout << "Error: Invalid date format!\n", 0);
+    return (std::cout << "Error: Invalid date format3!\n", 0);
   if ((month == 4 || month == 6 || month == 9 || month == 11) && day == 31)
     return (std::cout << "Error: Invalid month-day format\n", 0);
   if (month == 2) {
@@ -101,6 +101,15 @@ size_t BitcoinExchange::pipeCount(std::string& str) const {
   int count = 0;
   for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
     if (*it == '|')
+      count++;
+  }
+  return (count);
+}
+
+size_t BitcoinExchange::dotCount(std::string& str) const {
+  int count = 0;
+  for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
+    if (*it == '.')
       count++;
   }
   return (count);

@@ -26,6 +26,7 @@ class BitcoinExchange {
   bool date_check(std::string& date_str) const;
   void print_date(std::string& date_str);
   size_t pipeCount(std::string& str) const;
+  size_t dotCount(std::string& str) const;
 
   class InvalidValueException : public std::exception {
    public:
