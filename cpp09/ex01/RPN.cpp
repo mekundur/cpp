@@ -30,7 +30,6 @@ void RPN::calculate(const std::string& exp) {
   int result;
 
   while (ss >> token) {
-    // std::cout << token << " " << std::endl;
     if (token.size() != 1) {
       std::cerr << "Error" << std::endl;
       return;
@@ -38,7 +37,6 @@ void RPN::calculate(const std::string& exp) {
     if (isdigit(token[0])) {
       result = token[0] - 48;
       elements.push(token[0] - 48);
-      // print_stack(elements);
     } else if (token[0] == '+' || token[0] == '-' || token[0] == '*' ||
                token[0] == '/') {
       if (elements.size() < 2) {
@@ -49,12 +47,6 @@ void RPN::calculate(const std::string& exp) {
       elements.pop();
       int x = elements.top();
       elements.pop();
-
-      // std::cout << "a: " << a << std::endl;
-      // std::cout << "b: " << b << std::endl;
-      // std::cout << "operator: " << token[0] << std::endl;
-      // std::cout << "operator: " << static_cast<int>(token[0]) << std::endl;
-      // std::cout << '*' << std::endl;
 
       switch (token[0]) {
         case '+':
