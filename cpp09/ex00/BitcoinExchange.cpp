@@ -56,10 +56,10 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
     std::string line;
     getline(file, line, '\n');
     while (getline(file, line, '\n')) {
+      date_str.clear();
+      val_str.clear();
       if (pipeCount(line) > 1 || pipeCount(line) == 0) {
         std::cout << "Error: Multiple or no '|'s or empty entry! " << std::endl;
-        date_str.clear();
-        val_str.clear();
         continue;
       }
       std::string out_date_str;
@@ -82,19 +82,13 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
       ft_trim(val_str);
       if (date_str.empty() && val_str.size()) {
         std::cout << "Error: No date entry! " << std::endl;
-        date_str.clear();
-        val_str.clear();
         continue;
       } else if (date_str.empty()) {
         std::cout << "Error: Completely empty entry! " << std::endl;
-        date_str.clear();
-        val_str.clear();
         continue;
       }
       if (val_str.empty()) {
         std::cout << "Error: No value entry! " << std::endl;
-        date_str.clear();
-        val_str.clear();
         continue;
       } else {
         bool flag = 0;
@@ -105,8 +99,6 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
         }
         if (flag || dotCount(val_str) > 1) {
           std::cout << "Error: Wrong value format! " << std::endl;
-          date_str.clear();
-          val_str.clear();
           continue;
         }
       }
@@ -119,16 +111,12 @@ void BitcoinExchange::get_inputs(const std::string& file_name) {
                 stringToDouble(val_str) * search(stringToInt(date_str));
           } catch (std::exception& e) {
             std::cout << e.what() << std::endl;
-            date_str.clear();
-            val_str.clear();
             continue;
           }
           std::cout << out_date_str << " => " << val_str << " = " << std::fixed
                     << std::setprecision(2) << coin_result << std::endl;
         }
       }
-      date_str.clear();
-      val_str.clear();
     }
   }
 }
