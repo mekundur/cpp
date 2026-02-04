@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-// for counting comparasion vsteps
+// global variabels for counting comparasion vsteps
 extern int vsteps;
 extern int dsteps;
 
@@ -14,6 +14,8 @@ class PmergeMe {
  private:
   std::vector<int> _myVec;
   std::deque<int> _myDeq;
+  std::vector<int> _vecResult;
+  std::deque<int> _deqResult;
 
  public:
   PmergeMe();
@@ -32,16 +34,15 @@ class PmergeMe {
 
   // Vector methods for FordJohson
   void fordJohnson(std::vector<int>& v, int i);
-  void binaryInsertionBound(std::vector<int>& main, int upperBoundVal, int val);
   void jacobsthalInsertion(std::vector<int>& main,
-                           const std::vector<int>& large,
-                           const std::vector<int>& small);
+                           const std::vector<int>& mappedSmall);
+  void binaryInsertionBound(std::vector<int>& main, size_t up, int val);
 
   // Deque methods for FordJohson
   void fordJohnson(std::deque<int>& v, int i);
-  void binaryInsertionBound(std::deque<int>& main, int upperBoundVal, int val);
-  void jacobsthalInsertion(std::deque<int>& main, const std::deque<int>& large,
-                           const std::deque<int>& small);
+  void jacobsthalInsertion(std::deque<int>& main,
+                           const std::deque<int>& mappedSmall);
+  void binaryInsertionBound(std::deque<int>& main, size_t up, int value);
 
   // Utils Functions
   static void printVec(const std::vector<int>& vec);

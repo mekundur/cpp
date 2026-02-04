@@ -31,19 +31,9 @@ void PmergeMe::printDeq(const std::deque<size_t>& deq) {
   std::cout << std::endl;
 }
 
-// Insertion Sort
-void linearInsert(std::vector<int>& sorted, int value) {
-  std::vector<int>::iterator it = sorted.begin();
-  while (it != sorted.end()) {
-    vsteps++;
-    if (*it < value)
-      ++it;
-    else
-      break;
-  }
-  sorted.insert(it, value);
-}
-
+/** 
+ * @brief generating original Jacobsthal series and the cutting the first two elements {0, 1}
+ */
 std::vector<size_t> PmergeMe::generateJacobs(size_t n) {
   std::vector<size_t> jacobs;
   jacobs.push_back(0);
@@ -61,4 +51,49 @@ double getCurrentTime() {
   struct timeval tv;
   gettimeofday(&tv, NULL);
   return tv.tv_sec * 1000000.0 + tv.tv_usec;
+}
+
+// Insertion Sort
+void linearInsert(std::vector<int>& sorted, int value) {
+  std::vector<int>::iterator it = sorted.begin();
+  while (it != sorted.end()) {
+    vsteps++;
+    if (*it < value)
+      ++it;
+    else
+      break;
+  }
+  sorted.insert(it, value);
+}
+
+// Insert value into sorted mainChain using full binary search
+void binaryInsertion(std::vector<int>& main, int val) {
+  size_t low = 0;
+  size_t up = main.size();
+
+  while (low < up) {
+    size_t mid = (low + up) / 2;
+    if (main[mid] < val)
+      low = mid + 1;
+    else
+      up = mid;
+    vsteps++;
+  }
+  main.insert(main.begin() + low, val);
+}
+
+// Insert value into sorted mainChain using full binary search
+void binaryInsertion(std::deque<int>& main, int val) {
+  size_t low = 0;
+  size_t up = main.size();
+
+  while (low < up) {
+    size_t mid = (low + up) / 2;
+    if (main[mid] < val)
+      low = mid + 1;
+    else
+      up = mid;
+    dsteps++;
+  }
+  main.insert(main.begin() + low, val);
 }

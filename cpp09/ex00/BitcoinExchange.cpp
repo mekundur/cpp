@@ -31,19 +31,6 @@ double BitcoinExchange::search(int date) {
   return (it->second);
 }
 
-// O(n) lookup complexity
-// double BitcoinExchange::search(int date) {
-//   std::map<int, double>::iterator it = _data.begin();
-//   for (; it != _data.end(); it++) {
-//     if (it->first == date)
-//       return (it->second);
-//   }
-//   it = _data.lower_bound(date);
-//   if (it != _data.begin())
-//     it--;
-//   return (it->second);
-// }
-
 void BitcoinExchange::get_inputs(const std::string& file_name) {
   std::string date_str;
   std::string val_str;
